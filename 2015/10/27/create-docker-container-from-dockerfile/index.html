@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ftp," />
+  <meta name="keywords" content="docker," />
 
 
 
@@ -84,21 +84,34 @@
 
 
 
-<meta name="description" content="安装vstfpd1# yum  install  -y vsftpd;
-查看配置文件1# whereis vsftpd">
+<meta name="description" content="本文主要介绍从Dockerfile创建一个centos7镜像
+安装docker1$ sudo yum install docker
+添加当前用户到docker组中，可以省去每次输入sudo1$sudo usermod -a -G docker $USER
+#下载相关文件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="centos搭建ftp服务">
-<meta property="og:url" content="http://yoursite.com/2015/10/27/create-ftpserver-in-centos/index.html">
+<meta property="og:title" content="从Dockfile创建一个镜像">
+<meta property="og:url" content="http://yoursite.com/2015/10/27/create-docker-container-from-dockerfile/index.html">
 <meta property="og:site_name" content="Grug Code Life">
-<meta property="og:description" content="安装vstfpd1# yum  install  -y vsftpd;
-查看配置文件1# whereis vsftpd">
-<meta property="og:image" content="http://grug.glovee.net/wp-content/uploads/sites/3/2015/09/20150918102724.png">
-<meta property="og:updated_time" content="2016-08-31T06:51:40.000Z">
+<meta property="og:description" content="本文主要介绍从Dockerfile创建一个centos7镜像
+安装docker1$ sudo yum install docker
+添加当前用户到docker组中，可以省去每次输入sudo1$sudo usermod -a -G docker $USER
+#下载相关文件">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build1.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build2.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build3.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build4.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build5.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build_centos.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build_centos1.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build_centos2.png">
+<meta property="og:updated_time" content="2016-08-31T09:41:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="centos搭建ftp服务">
-<meta name="twitter:description" content="安装vstfpd1# yum  install  -y vsftpd;
-查看配置文件1# whereis vsftpd">
-<meta name="twitter:image" content="http://grug.glovee.net/wp-content/uploads/sites/3/2015/09/20150918102724.png">
+<meta name="twitter:title" content="从Dockfile创建一个镜像">
+<meta name="twitter:description" content="本文主要介绍从Dockerfile创建一个centos7镜像
+安装docker1$ sudo yum install docker
+添加当前用户到docker组中，可以省去每次输入sudo1$sudo usermod -a -G docker $USER
+#下载相关文件">
+<meta name="twitter:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build1.png">
 
 
 
@@ -119,9 +132,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/10/27/create-ftpserver-in-centos/"/>
+  <link rel="canonical" href="http://yoursite.com/2015/10/27/create-docker-container-from-dockerfile/"/>
 
-  <title> centos搭建ftp服务 | Grug Code Life </title>
+  <title> 从Dockfile创建一个镜像 | Grug Code Life </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +264,7 @@
             
             
               
-                centos搭建ftp服务
+                从Dockfile创建一个镜像
               
             
           </h1>
@@ -263,7 +276,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-27T11:44:55+08:00" content="2015-10-27">
+            <time itemprop="dateCreated" datetime="2015-10-27T11:52:00+08:00" content="2015-10-27">
               2015-10-27
             </time>
           </span>
@@ -277,8 +290,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
                   </a>
                 </span>
 
@@ -310,15 +323,26 @@
       
 
       
-        <h2 id="安装vstfpd"><a href="#安装vstfpd" class="headerlink" title="安装vstfpd"></a>安装vstfpd</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># yum  install  -y vsftpd;</span></div></pre></td></tr></table></figure>
-<h2 id="查看配置文件"><a href="#查看配置文件" class="headerlink" title="查看配置文件"></a>查看配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># whereis vsftpd</span></div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>可以看到以下内容<br><a href="http://grug.glovee.net/wp-content/uploads/sites/3/2015/09/20150918102724.png" target="_blank" rel="external"><img src="http://grug.glovee.net/wp-content/uploads/sites/3/2015/09/20150918102724.png" alt="20150918102724"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># cd /etc/vsftpd</span></div><div class="line"><span class="comment">#vim vsftpd.conf</span></div></pre></td></tr></table></figure></p>
-<p>修改下面的内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">anonymous_enable=NO</div><div class="line">.....</div><div class="line">chroot_list_enable=YES</div><div class="line"><span class="comment"># (default follows)</span></div><div class="line">chroot_list_file=/etc/vsftpd/chroot_list</div><div class="line">allow_writeable_chroot=YES</div><div class="line">``` bash</div><div class="line"><span class="comment">## 新建ftp用户</span></div><div class="line">``` bash</div><div class="line"><span class="comment">#useradd -d /home/ftpuser -g ftp ftpuser -s /sbin/nologin</span></div><div class="line"><span class="comment">#passwd ftpuser</span></div></pre></td></tr></table></figure></p>
-<h2 id="修改chroot-list文件"><a href="#修改chroot-list文件" class="headerlink" title="修改chroot_list文件"></a>修改chroot_list文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#vim chroot_list</span></div></pre></td></tr></table></figure>
-<h2 id="在chroot-list添加ftpuser用户"><a href="#在chroot-list添加ftpuser用户" class="headerlink" title="在chroot_list添加ftpuser用户"></a>在chroot_list添加ftpuser用户</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ftpuser</div></pre></td></tr></table></figure>
-<h2 id="开启vsftpd-服务"><a href="#开启vsftpd-服务" class="headerlink" title="开启vsftpd 服务"></a>开启vsftpd 服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#service vsftpd start</span></div></pre></td></tr></table></figure>
-<h2 id="开机启动vsftpd"><a href="#开机启动vsftpd" class="headerlink" title="开机启动vsftpd"></a>开机启动vsftpd</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#chkconfig vsftpd on</span></div></pre></td></tr></table></figure>
+        <p>本文主要介绍从Dockerfile创建一个centos7镜像</p>
+<h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install docker</div></pre></td></tr></table></figure>
+<p>添加当前用户到docker组中，可以省去每次输入sudo<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> usermod <span class="_">-a</span> -G docker <span class="variable">$USER</span></div></pre></td></tr></table></figure></p>
+<p>#下载相关文件<br><a id="more"></a></p>
+<p>访问<a href="https://github.com/CentOS/sig-cloud-instance-images/tree/281559d6864e84fe365ef4007d4db27c197b50fb" target="_blank" rel="external">git_bub_centos</a></p>
+<p>下载zip,解压缩<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$wget</span> https://codeload.github.com/CentOS/sig-cloud-instance-images/zip/281559d6864e84fe365ef4007d4db27c197b50fb</div></pre></td></tr></table></figure></p>
+<p>重新命名centos7</p>
+<h1 id="编辑Dockerfile"><a href="#编辑Dockerfile" class="headerlink" title="编辑Dockerfile"></a>编辑Dockerfile</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$vim</span> Dockerfile</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">FROM scratch</div><div class="line">MAINTAINER The CentOS Project &amp;lt;cloud-ops@centos.org&amp;gt;</div><div class="line">ADD c7-docker.tar.xz /</div><div class="line">LABEL Vendor=&quot;CentOS&quot;</div><div class="line">LABEL License=GPLv2</div><div class="line">VOLUME [&quot;/run&quot;, &quot;/tmp&quot;]</div><div class="line">ENV container=docker</div><div class="line">RUN yum install -y openssh-server sudo</div><div class="line">RUN sed -i &apos;s/UsePAM yes/UsePAM no/g&apos; /etc/ssh/sshd_config</div><div class="line">RUN useradd admin</div><div class="line">RUN echo &quot;admin:admin&quot; | chpasswd</div><div class="line">RUN echo &quot;admin ALL=(ALL) ALL&quot; &amp;gt;&amp;gt; /etc/sudoers</div><div class="line">RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key</div><div class="line">RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key</div><div class="line">RUN mkdir /var/run/sshd</div><div class="line">EXPOSE 22</div><div class="line">CMD [&quot;/usr/sbin/sshd&quot;, &quot;-D&quot;]</div></pre></td></tr></table></figure>
+<h1 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker build -t centos7<span class="built_in">test</span>  . (这里的“.”表示当前目录)</div></pre></td></tr></table></figure>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build1.png" alt="docker_build1"><br><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build2.png" alt="docker_build1"><br><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build3.png" alt="docker_build1"><br><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build4.png" alt="docker_build1"></p>
+<h1 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker images</div></pre></td></tr></table></figure>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build5.png" alt="docker_build1"></p>
+<h1 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$docker</span> run <span class="_">-d</span> -p 22 centos7<span class="built_in">test</span></div></pre></td></tr></table></figure>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build_centos.png" alt="docker_build1"><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$docker</span> ps</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build_centos1.png" alt="docker_build1"></p>
+<p>其中的centos7test的容器中的22端口映射主机的32768端口</p>
+<h1 id="用ssh登录启动的容器"><a href="#用ssh登录启动的容器" class="headerlink" title="用ssh登录启动的容器"></a>用ssh登录启动的容器</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh admin@localhost -p 32768</div></pre></td></tr></table></figure>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build_centos2.png" alt="docker_build1"></p>
+<p>红色表示已经成功登录到容器</p>
 
       
     </div>
@@ -341,7 +365,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ftp/" rel="tag">#ftp</a>
+            <a href="/tags/docker/" rel="tag">#docker</a>
           
         </div>
       
@@ -350,12 +374,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/10/27/create-ftpserver-in-centos/" rel="next" title="centos搭建ftp服务">
+                <i class="fa fa-chevron-left"></i> centos搭建ftp服务
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/27/create-docker-container-from-dockerfile/" rel="prev" title="从Dockfile创建一个镜像">
-                从Dockfile创建一个镜像 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/11/23/create-docker-cluster-with-docker-machine/" rel="prev" title="Docker Swarm实战（1）-以Docker Machine建立docker集群">
+                Docker Swarm实战（1）-以Docker Machine建立docker集群 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -470,7 +498,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装vstfpd"><span class="nav-number">1.</span> <span class="nav-text">安装vstfpd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看配置文件"><span class="nav-number">2.</span> <span class="nav-text">查看配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改chroot-list文件"><span class="nav-number">3.</span> <span class="nav-text">修改chroot_list文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在chroot-list添加ftpuser用户"><span class="nav-number">4.</span> <span class="nav-text">在chroot_list添加ftpuser用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启vsftpd-服务"><span class="nav-number">5.</span> <span class="nav-text">开启vsftpd 服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开机启动vsftpd"><span class="nav-number">6.</span> <span class="nav-text">开机启动vsftpd</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装docker"><span class="nav-number">1.</span> <span class="nav-text">安装docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编辑Dockerfile"><span class="nav-number">2.</span> <span class="nav-text">编辑Dockerfile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译"><span class="nav-number">3.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看镜像"><span class="nav-number">4.</span> <span class="nav-text">查看镜像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动镜像"><span class="nav-number">5.</span> <span class="nav-text">启动镜像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用ssh登录启动的容器"><span class="nav-number">6.</span> <span class="nav-text">用ssh登录启动的容器</span></a></li></ol></div>
             
           </div>
         </section>

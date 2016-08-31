@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ftp," />
+  <meta name="keywords" content="java,collections,sort," />
 
 
 
@@ -84,21 +84,16 @@
 
 
 
-<meta name="description" content="安装vstfpd1# yum  install  -y vsftpd;
-查看配置文件1# whereis vsftpd">
+<meta name="description" content="123456789101112131415161718192021public class CollectionsSortTest &amp;#123;    public static void main(String... args)&amp;#123;        Long[] longs=&amp;#123;2L,4L,35L,837L,5L,11L,2L,0L,-1L,22L&amp;#125;;        Li">
 <meta property="og:type" content="article">
-<meta property="og:title" content="centos搭建ftp服务">
-<meta property="og:url" content="http://yoursite.com/2015/10/27/create-ftpserver-in-centos/index.html">
+<meta property="og:title" content="Collections.sort()用法总结">
+<meta property="og:url" content="http://yoursite.com/2016/01/25/collections-sort/index.html">
 <meta property="og:site_name" content="Grug Code Life">
-<meta property="og:description" content="安装vstfpd1# yum  install  -y vsftpd;
-查看配置文件1# whereis vsftpd">
-<meta property="og:image" content="http://grug.glovee.net/wp-content/uploads/sites/3/2015/09/20150918102724.png">
-<meta property="og:updated_time" content="2016-08-31T06:51:40.000Z">
+<meta property="og:description" content="123456789101112131415161718192021public class CollectionsSortTest &amp;#123;    public static void main(String... args)&amp;#123;        Long[] longs=&amp;#123;2L,4L,35L,837L,5L,11L,2L,0L,-1L,22L&amp;#125;;        Li">
+<meta property="og:updated_time" content="2016-08-31T09:03:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="centos搭建ftp服务">
-<meta name="twitter:description" content="安装vstfpd1# yum  install  -y vsftpd;
-查看配置文件1# whereis vsftpd">
-<meta name="twitter:image" content="http://grug.glovee.net/wp-content/uploads/sites/3/2015/09/20150918102724.png">
+<meta name="twitter:title" content="Collections.sort()用法总结">
+<meta name="twitter:description" content="123456789101112131415161718192021public class CollectionsSortTest &amp;#123;    public static void main(String... args)&amp;#123;        Long[] longs=&amp;#123;2L,4L,35L,837L,5L,11L,2L,0L,-1L,22L&amp;#125;;        Li">
 
 
 
@@ -119,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/10/27/create-ftpserver-in-centos/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/01/25/collections-sort/"/>
 
-  <title> centos搭建ftp服务 | Grug Code Life </title>
+  <title> Collections.sort()用法总结 | Grug Code Life </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +246,7 @@
             
             
               
-                centos搭建ftp服务
+                Collections.sort()用法总结
               
             
           </h1>
@@ -263,8 +258,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-27T11:44:55+08:00" content="2015-10-27">
-              2015-10-27
+            <time itemprop="dateCreated" datetime="2016-01-25T14:35:05+08:00" content="2016-01-25">
+              2016-01-25
             </time>
           </span>
 
@@ -277,8 +272,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -310,16 +305,7 @@
       
 
       
-        <h2 id="安装vstfpd"><a href="#安装vstfpd" class="headerlink" title="安装vstfpd"></a>安装vstfpd</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># yum  install  -y vsftpd;</span></div></pre></td></tr></table></figure>
-<h2 id="查看配置文件"><a href="#查看配置文件" class="headerlink" title="查看配置文件"></a>查看配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># whereis vsftpd</span></div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>可以看到以下内容<br><a href="http://grug.glovee.net/wp-content/uploads/sites/3/2015/09/20150918102724.png" target="_blank" rel="external"><img src="http://grug.glovee.net/wp-content/uploads/sites/3/2015/09/20150918102724.png" alt="20150918102724"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># cd /etc/vsftpd</span></div><div class="line"><span class="comment">#vim vsftpd.conf</span></div></pre></td></tr></table></figure></p>
-<p>修改下面的内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">anonymous_enable=NO</div><div class="line">.....</div><div class="line">chroot_list_enable=YES</div><div class="line"><span class="comment"># (default follows)</span></div><div class="line">chroot_list_file=/etc/vsftpd/chroot_list</div><div class="line">allow_writeable_chroot=YES</div><div class="line">``` bash</div><div class="line"><span class="comment">## 新建ftp用户</span></div><div class="line">``` bash</div><div class="line"><span class="comment">#useradd -d /home/ftpuser -g ftp ftpuser -s /sbin/nologin</span></div><div class="line"><span class="comment">#passwd ftpuser</span></div></pre></td></tr></table></figure></p>
-<h2 id="修改chroot-list文件"><a href="#修改chroot-list文件" class="headerlink" title="修改chroot_list文件"></a>修改chroot_list文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#vim chroot_list</span></div></pre></td></tr></table></figure>
-<h2 id="在chroot-list添加ftpuser用户"><a href="#在chroot-list添加ftpuser用户" class="headerlink" title="在chroot_list添加ftpuser用户"></a>在chroot_list添加ftpuser用户</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ftpuser</div></pre></td></tr></table></figure>
-<h2 id="开启vsftpd-服务"><a href="#开启vsftpd-服务" class="headerlink" title="开启vsftpd 服务"></a>开启vsftpd 服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#service vsftpd start</span></div></pre></td></tr></table></figure>
-<h2 id="开机启动vsftpd"><a href="#开机启动vsftpd" class="headerlink" title="开机启动vsftpd"></a>开机启动vsftpd</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#chkconfig vsftpd on</span></div></pre></td></tr></table></figure>
-
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CollectionsSortTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span></span>&#123;</div><div class="line">        Long[] longs=&#123;<span class="number">2L</span>,<span class="number">4L</span>,<span class="number">35L</span>,<span class="number">837L</span>,<span class="number">5L</span>,<span class="number">11L</span>,<span class="number">2L</span>,<span class="number">0L</span>,-<span class="number">1L</span>,<span class="number">22L</span>&#125;;</div><div class="line">        List list= Arrays.asList(longs);</div><div class="line">       Collections.sort(list);<span class="comment">//默认排序，升序。本接口list排序的类（比如示例的Long）要实现Comparable接口</span></div><div class="line">       Collections.sort(list,<span class="keyword">new</span> Comparator() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Long o1, Long o2)</span> </span>&#123;</div><div class="line">                <span class="comment">//if(o1&amp;gt;o2) return -1; else return 1//降序</span></div><div class="line">                <span class="comment">// if(o1&amp;lt;o2) return -1; else return 1 //升序 //if(o1&lt;o2) return 1;  else return -1  //升序</span></div><div class="line">                <span class="comment">//降序</span></div><div class="line">                <span class="keyword">if</span>(o1&amp;lt;o2)  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">for</span>(Long l:list)&#123;</div><div class="line">            System.out.print(l+<span class="string">" "</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"><span class="comment">//java 8更新</span></div><div class="line">List.sort((o1,o2)-&gt;Integer.compare(o1,o2));</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -341,7 +327,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ftp/" rel="tag">#ftp</a>
+            <a href="/tags/java/" rel="tag">#java</a>
+          
+            <a href="/tags/collections/" rel="tag">#collections</a>
+          
+            <a href="/tags/sort/" rel="tag">#sort</a>
           
         </div>
       
@@ -350,12 +340,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/11/23/create-docker-cluster-with-docker-machine/" rel="next" title="Docker Swarm实战（1）-以Docker Machine建立docker集群">
+                <i class="fa fa-chevron-left"></i> Docker Swarm实战（1）-以Docker Machine建立docker集群
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/27/create-docker-container-from-dockerfile/" rel="prev" title="从Dockfile创建一个镜像">
-                从Dockfile创建一个镜像 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/08/a-thread-safe-counter/" rel="prev" title="一个线程安全的计数器">
+                一个线程安全的计数器 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -470,7 +464,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装vstfpd"><span class="nav-number">1.</span> <span class="nav-text">安装vstfpd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看配置文件"><span class="nav-number">2.</span> <span class="nav-text">查看配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改chroot-list文件"><span class="nav-number">3.</span> <span class="nav-text">修改chroot_list文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在chroot-list添加ftpuser用户"><span class="nav-number">4.</span> <span class="nav-text">在chroot_list添加ftpuser用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启vsftpd-服务"><span class="nav-number">5.</span> <span class="nav-text">开启vsftpd 服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开机启动vsftpd"><span class="nav-number">6.</span> <span class="nav-text">开机启动vsftpd</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
