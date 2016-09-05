@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="collections,java,sort," />
+  <meta name="keywords" content="java,collections,sort," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="123456789101112131415161718192021public class CollectionsSortTest &amp;#123;    public static void main(String... args)&amp;#123;        Long[] longs=&amp;#123;2L,4L,35L,837L,5L,11L,2L,0L,-1L,22L&amp;#125;;        Li">
+<meta name="description" content="public class CollectionsSortTest &amp;#123;    public static void main(String... args)&amp;#123;        Long[] longs=&amp;#123;2L,4L,35L,837L,5L,11L,2L,0L,-1L,22L&amp;#125;;        List list= Arrays.asList(longs);">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Collections.sort()用法总结">
 <meta property="og:url" content="http://grug.tech/2016/01/25/collections-sort/index.html">
 <meta property="og:site_name" content="Grug Code Life">
-<meta property="og:description" content="123456789101112131415161718192021public class CollectionsSortTest &amp;#123;    public static void main(String... args)&amp;#123;        Long[] longs=&amp;#123;2L,4L,35L,837L,5L,11L,2L,0L,-1L,22L&amp;#125;;        Li">
+<meta property="og:description" content="public class CollectionsSortTest &amp;#123;    public static void main(String... args)&amp;#123;        Long[] longs=&amp;#123;2L,4L,35L,837L,5L,11L,2L,0L,-1L,22L&amp;#125;;        List list= Arrays.asList(longs);">
 <meta property="og:updated_time" content="2016-08-31T09:03:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Collections.sort()用法总结">
-<meta name="twitter:description" content="123456789101112131415161718192021public class CollectionsSortTest &amp;#123;    public static void main(String... args)&amp;#123;        Long[] longs=&amp;#123;2L,4L,35L,837L,5L,11L,2L,0L,-1L,22L&amp;#125;;        Li">
+<meta name="twitter:description" content="public class CollectionsSortTest &amp;#123;    public static void main(String... args)&amp;#123;        Long[] longs=&amp;#123;2L,4L,35L,837L,5L,11L,2L,0L,-1L,22L&amp;#125;;        List list= Arrays.asList(longs);">
 
 
 
@@ -327,7 +327,7 @@
       
 
       
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CollectionsSortTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span></span>&#123;</div><div class="line">        Long[] longs=&#123;<span class="number">2L</span>,<span class="number">4L</span>,<span class="number">35L</span>,<span class="number">837L</span>,<span class="number">5L</span>,<span class="number">11L</span>,<span class="number">2L</span>,<span class="number">0L</span>,-<span class="number">1L</span>,<span class="number">22L</span>&#125;;</div><div class="line">        List list= Arrays.asList(longs);</div><div class="line">       Collections.sort(list);<span class="comment">//默认排序，升序。本接口list排序的类（比如示例的Long）要实现Comparable接口</span></div><div class="line">       Collections.sort(list,<span class="keyword">new</span> Comparator() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Long o1, Long o2)</span> </span>&#123;</div><div class="line">                <span class="comment">//if(o1&amp;gt;o2) return -1; else return 1//降序</span></div><div class="line">                <span class="comment">// if(o1&amp;lt;o2) return -1; else return 1 //升序 //if(o1&lt;o2) return 1;  else return -1  //升序</span></div><div class="line">                <span class="comment">//降序</span></div><div class="line">                <span class="keyword">if</span>(o1&amp;lt;o2)  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">for</span>(Long l:list)&#123;</div><div class="line">            System.out.print(l+<span class="string">" "</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"><span class="comment">//java 8更新</span></div><div class="line">List.sort((o1,o2)-&gt;Integer.compare(o1,o2));</div></pre></td></tr></table></figure>
+        <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CollectionsSortTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span></span>&#123;</div><div class="line">        Long[] longs=&#123;<span class="number">2L</span>,<span class="number">4L</span>,<span class="number">35L</span>,<span class="number">837L</span>,<span class="number">5L</span>,<span class="number">11L</span>,<span class="number">2L</span>,<span class="number">0L</span>,-<span class="number">1L</span>,<span class="number">22L</span>&#125;;</div><div class="line">        List list= Arrays.asList(longs);</div><div class="line">       Collections.sort(list);<span class="comment">//默认排序，升序。本接口list排序的类（比如示例的Long）要实现Comparable接口</span></div><div class="line">       Collections.sort(list,<span class="keyword">new</span> Comparator() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Long o1, Long o2)</span> </span>&#123;</div><div class="line">                <span class="comment">//if(o1&amp;gt;o2) return -1; else return 1//降序</span></div><div class="line">                <span class="comment">// if(o1&amp;lt;o2) return -1; else return 1 //升序 //if(o1&lt;o2) return 1;  else return -1  //升序</span></div><div class="line">                <span class="comment">//降序</span></div><div class="line">                <span class="keyword">if</span>(o1&amp;lt;o2)  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">for</span>(Long l:list)&#123;</div><div class="line">            System.out.print(l+<span class="string">" "</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"><span class="comment">//java 8更新</span></div><div class="line">List.sort((o1,o2)-&gt;Integer.compare(o1,o2));</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -349,9 +349,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/collections/" rel="tag">#collections</a>
-          
             <a href="/tags/java/" rel="tag">#java</a>
+          
+            <a href="/tags/collections/" rel="tag">#collections</a>
           
             <a href="/tags/sort/" rel="tag">#sort</a>
           
@@ -463,7 +463,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

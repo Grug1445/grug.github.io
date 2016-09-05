@@ -85,16 +85,16 @@
 
 
 <meta name="description" content="本文主要介绍从Dockerfile创建一个centos7镜像
-安装docker1$ sudo yum install docker
-添加当前用户到docker组中，可以省去每次输入sudo1$sudo usermod -a -G docker $USER
+安装docker$ sudo yum install docker
+添加当前用户到docker组中，可以省去每次输入sudo$sudo usermod -a -G docker $USER
 #下载相关文件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从Dockfile创建一个镜像">
 <meta property="og:url" content="http://grug.tech/2015/10/27/create-docker-container-from-dockerfile/index.html">
 <meta property="og:site_name" content="Grug Code Life">
 <meta property="og:description" content="本文主要介绍从Dockerfile创建一个centos7镜像
-安装docker1$ sudo yum install docker
-添加当前用户到docker组中，可以省去每次输入sudo1$sudo usermod -a -G docker $USER
+安装docker$ sudo yum install docker
+添加当前用户到docker组中，可以省去每次输入sudo$sudo usermod -a -G docker $USER
 #下载相关文件">
 <meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build1.png">
 <meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build2.png">
@@ -108,8 +108,8 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从Dockfile创建一个镜像">
 <meta name="twitter:description" content="本文主要介绍从Dockerfile创建一个centos7镜像
-安装docker1$ sudo yum install docker
-添加当前用户到docker组中，可以省去每次输入sudo1$sudo usermod -a -G docker $USER
+安装docker$ sudo yum install docker
+添加当前用户到docker组中，可以省去每次输入sudo$sudo usermod -a -G docker $USER
 #下载相关文件">
 <meta name="twitter:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build1.png">
 
@@ -346,23 +346,23 @@
 
       
         <p>本文主要介绍从Dockerfile创建一个centos7镜像</p>
-<h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install docker</div></pre></td></tr></table></figure>
-<p>添加当前用户到docker组中，可以省去每次输入sudo<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> usermod <span class="_">-a</span> -G docker <span class="variable">$USER</span></div></pre></td></tr></table></figure></p>
+<h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo yum install docker</div></pre></td></tr></table></figure>
+<p>添加当前用户到docker组中，可以省去每次输入sudo<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="variable">$sudo</span> usermod <span class="_">-a</span> -G docker <span class="variable">$USER</span></div></pre></td></tr></table></figure></p>
 <p>#下载相关文件<br><a id="more"></a></p>
 <p>访问<a href="https://github.com/CentOS/sig-cloud-instance-images/tree/281559d6864e84fe365ef4007d4db27c197b50fb" target="_blank" rel="external">git_bub_centos</a></p>
-<p>下载zip,解压缩<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$wget</span> https://codeload.github.com/CentOS/sig-cloud-instance-images/zip/281559d6864e84fe365ef4007d4db27c197b50fb</div></pre></td></tr></table></figure></p>
+<p>下载zip,解压缩<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="variable">$wget</span> https://codeload.github.com/CentOS/sig-cloud-instance-images/zip/281559d6864e84fe365ef4007d4db27c197b50fb</div></pre></td></tr></table></figure></p>
 <p>重新命名centos7</p>
-<h1 id="编辑Dockerfile"><a href="#编辑Dockerfile" class="headerlink" title="编辑Dockerfile"></a>编辑Dockerfile</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$vim</span> Dockerfile</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">FROM scratch</div><div class="line">MAINTAINER The CentOS Project &amp;lt;cloud-ops@centos.org&amp;gt;</div><div class="line">ADD c7-docker.tar.xz /</div><div class="line">LABEL Vendor=&quot;CentOS&quot;</div><div class="line">LABEL License=GPLv2</div><div class="line">VOLUME [&quot;/run&quot;, &quot;/tmp&quot;]</div><div class="line">ENV container=docker</div><div class="line">RUN yum install -y openssh-server sudo</div><div class="line">RUN sed -i &apos;s/UsePAM yes/UsePAM no/g&apos; /etc/ssh/sshd_config</div><div class="line">RUN useradd admin</div><div class="line">RUN echo &quot;admin:admin&quot; | chpasswd</div><div class="line">RUN echo &quot;admin ALL=(ALL) ALL&quot; &amp;gt;&amp;gt; /etc/sudoers</div><div class="line">RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key</div><div class="line">RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key</div><div class="line">RUN mkdir /var/run/sshd</div><div class="line">EXPOSE 22</div><div class="line">CMD [&quot;/usr/sbin/sshd&quot;, &quot;-D&quot;]</div></pre></td></tr></table></figure>
-<h1 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker build -t centos7<span class="built_in">test</span>  . (这里的“.”表示当前目录)</div></pre></td></tr></table></figure>
+<h1 id="编辑Dockerfile"><a href="#编辑Dockerfile" class="headerlink" title="编辑Dockerfile"></a>编辑Dockerfile</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="variable">$vim</span> Dockerfile</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">FROM scratch</div><div class="line">MAINTAINER The CentOS Project &amp;lt;cloud-ops@centos.org&amp;gt;</div><div class="line">ADD c7-docker.tar.xz /</div><div class="line">LABEL Vendor=&quot;CentOS&quot;</div><div class="line">LABEL License=GPLv2</div><div class="line">VOLUME [&quot;/run&quot;, &quot;/tmp&quot;]</div><div class="line">ENV container=docker</div><div class="line">RUN yum install -y openssh-server sudo</div><div class="line">RUN sed -i &apos;s/UsePAM yes/UsePAM no/g&apos; /etc/ssh/sshd_config</div><div class="line">RUN useradd admin</div><div class="line">RUN echo &quot;admin:admin&quot; | chpasswd</div><div class="line">RUN echo &quot;admin ALL=(ALL) ALL&quot; &amp;gt;&amp;gt; /etc/sudoers</div><div class="line">RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key</div><div class="line">RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key</div><div class="line">RUN mkdir /var/run/sshd</div><div class="line">EXPOSE 22</div><div class="line">CMD [&quot;/usr/sbin/sshd&quot;, &quot;-D&quot;]</div></pre></td></tr></table></figure>
+<h1 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ docker build -t centos7<span class="built_in">test</span>  . (这里的“.”表示当前目录)</div></pre></td></tr></table></figure>
 <p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build1.png" alt="docker_build1"><br><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build2.png" alt="docker_build1"><br><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build3.png" alt="docker_build1"><br><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build4.png" alt="docker_build1"></p>
-<h1 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker images</div></pre></td></tr></table></figure>
+<h1 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ docker images</div></pre></td></tr></table></figure>
 <p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build5.png" alt="docker_build1"></p>
-<h1 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$docker</span> run <span class="_">-d</span> -p 22 centos7<span class="built_in">test</span></div></pre></td></tr></table></figure>
-<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build_centos.png" alt="docker_build1"><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$docker</span> ps</div></pre></td></tr></table></figure></p>
+<h1 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="variable">$docker</span> run <span class="_">-d</span> -p 22 centos7<span class="built_in">test</span></div></pre></td></tr></table></figure>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build_centos.png" alt="docker_build1"><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="variable">$docker</span> ps</div></pre></td></tr></table></figure></p>
 <p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build_centos1.png" alt="docker_build1"></p>
 <p>其中的centos7test的容器中的22端口映射主机的32768端口</p>
-<h1 id="用ssh登录启动的容器"><a href="#用ssh登录启动的容器" class="headerlink" title="用ssh登录启动的容器"></a>用ssh登录启动的容器</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh admin@localhost -p 32768</div></pre></td></tr></table></figure>
+<h1 id="用ssh登录启动的容器"><a href="#用ssh登录启动的容器" class="headerlink" title="用ssh登录启动的容器"></a>用ssh登录启动的容器</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ ssh admin@localhost -p 32768</div></pre></td></tr></table></figure>
 <p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build_centos2.png" alt="docker_build1"></p>
 <p>红色表示已经成功登录到容器</p>
 
@@ -396,8 +396,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/27/create-ftpserver-in-centos/" rel="next" title="centos搭建ftp服务">
-                <i class="fa fa-chevron-left"></i> centos搭建ftp服务
+              <a href="/2015/10/27/create-mailserver-in-centos7/" rel="next" title="centos7搭建邮件服务器">
+                <i class="fa fa-chevron-left"></i> centos7搭建邮件服务器
               </a>
             
           </div>
@@ -497,7 +497,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
