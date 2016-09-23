@@ -1,0 +1,879 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="docker,docker容器云,docker应用栈," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本文以《Docker 容器与容器云》中2.3章节为内容进行练习。
+结构图
+
+这个应用栈包含一个代理节点，两个web节点，一个主数据库及两个从数据库。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker单机应用栈">
+<meta property="og:url" content="http://grug.tech/2015/11/12/docker-app-stack/index.html">
+<meta property="og:site_name" content="Grug Code Life">
+<meta property="og:description" content="本文以《Docker 容器与容器云》中2.3章节为内容进行练习。
+结构图
+
+这个应用栈包含一个代理节点，两个web节点，一个主数据库及两个从数据库。">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/IMG_4846.jpg">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/20151111143045.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/20151111143022.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/20151111142553.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/20151111142509.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/redis-master_start.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/redis-slave1_start.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/redis-slave2_start.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/App1_start.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/app2_start.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/haproxy_start.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_ps.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/redis-master-mounts2.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/run_redis_master.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/query_master.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/query_slave1.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/query_slave2.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/pip_install_redis.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/app1-view.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/app2_view.png">
+<meta property="og:updated_time" content="2016-09-23T07:58:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker单机应用栈">
+<meta name="twitter:description" content="本文以《Docker 容器与容器云》中2.3章节为内容进行练习。
+结构图
+
+这个应用栈包含一个代理节点，两个web节点，一个主数据库及两个从数据库。">
+<meta name="twitter:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/IMG_4846.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6320578235264402000,
+      author: '作者'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://grug.tech/2015/11/12/docker-app-stack/"/>
+
+  <title> Docker单机应用栈 | Grug Code Life </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s95.cnzz.com/z_stat.php?id=1260282848&web_id=1260282848" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Grug Code Life</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Docker单机应用栈
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-12T15:28:55+08:00" content="2015-11-12">
+              2015-11-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/12/docker-app-stack/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/12/docker-app-stack/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/11/12/docker-app-stack/" class="leancloud_visitors" data-flag-title="Docker单机应用栈">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文以《Docker 容器与容器云》中2.3章节为内容进行练习。</p>
+<p>结构图</p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/IMG_4846.jpg" alt=""></p>
+<p>这个应用栈包含一个代理节点，两个web节点，一个主数据库及两个从数据库。<br><a id="more"></a></p>
+<p>其中</p>
+<p>HAProxy是负载均衡节点：</p>
+<p>Redis是非关系型数据库，由一个主节点，两个从节点构成。</p>
+<p>App是应用，这里用Python,基于Django架构设计的访问数据库的web应用。</p>
+<p>步骤：</p>
+<h1 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker pull index.alauda.cn/library/ubuntu</div><div class="line"></div><div class="line">docker pull index.alauda.cn/library/django</div><div class="line"></div><div class="line">docker pull index.alauda.cn/library/haproxy</div><div class="line"></div><div class="line">docker pull index.alauda.cn/library/redis</div></pre></td></tr></table></figure>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/20151111143045.png" alt="20151111143045"> <img src="http://7xo8j7.com1.z0.glb.clouddn.com/20151111143022.png" alt="20151111143022"> <img src="http://7xo8j7.com1.z0.glb.clouddn.com/20151111142553.png" alt="20151111142553">  <img src="http://7xo8j7.com1.z0.glb.clouddn.com/20151111142509.png" alt="20151111142509"></p>
+<h1 id="容器启动顺序为："><a href="#容器启动顺序为：" class="headerlink" title="容器启动顺序为："></a>容器启动顺序为：</h1><p>redis-master&gt;redis-slave&gt;APP&gt;HAProxy</p>
+<h1 id="启动容器节点"><a href="#启动容器节点" class="headerlink" title="启动容器节点"></a>启动容器节点</h1><p><span style="color: #ff0000;">注：如果linux启用了SElinux</span></p>
+<p><span style="color: #ff0000;">则所有挂载文件夹需要执行以下操作</span><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">chcon -Rt svirt_sandbox_file_t your_folder</div></pre></td></tr></table></figure></p>
+<p><strong>启动redis容器</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker run -it --name redis-master index.alauda.cn/library/redis /bin/bash</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/redis-master_start.png" alt="redis-master_start"><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker run -it --name redis-slave1 --link redis-master:master index.alauda.cn/library/redis /bin/bash</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/redis-slave1_start.png" alt="redis-slave1_start"><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker run -it --name redis-slave2 --link redis-master:master index.alauda.cn/library/redis /bin/bash</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/redis-slave2_start.png" alt="redis-slave2_start"></p>
+<p><strong>启动应用</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker run -it --name APP1 --link redis-master:db -v ~/Projects/Django/App1:/usr/src/app index.alauda.cn/library/django /bin/bash</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/App1_start.png" alt="App1_start"><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker run -it --name APP2 --link redis-master:db -v ~/Projects/Django/App2:/usr/src/app index.alauda.cn/library/django /bin/bash</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/app2_start.png" alt="app2_start"></p>
+<p><strong>启动HAProxy</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker run -it --name HAProxy --link APP1:APP1 --link APP2:APP2 -p 6301:6301 -v ~/Projects/HAProxy:/tmp index.alauda.cn/library/haproxy /bin/bash</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/haproxy_start.png" alt="haproxy_start"></p>
+<p>查看已经启动的容器</p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_ps.png" alt="docker_ps"></p>
+<p><span style="color: #ff0000;">注：请开启7个命令客户端</span></p>
+<h1 id="容器节点配置"><a href="#容器节点配置" class="headerlink" title="容器节点配置"></a>容器节点配置</h1><h2 id="redis主数据库节点配置"><a href="#redis主数据库节点配置" class="headerlink" title="redis主数据库节点配置"></a>redis主数据库节点配置</h2><p>查看redis-master在本地的挂载目录<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker inspect --format <span class="string">"&#123;&#123; .Mounts&#125;&#125;"</span> redis-master</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/redis-master-mounts2.png" alt="redis-master-mounts2"></p>
+<p>修改redis.conf模板文件如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">daemonize yes</div></pre></td></tr></table></figure></p>
+<p>然后<span style="color: #ff0000;">在redis-master容器中</span>拷贝/data下redis.conf到执行工作目录，启动redis服务器。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#在容器中</span></div><div class="line">cp /data/redis.conf .</div><div class="line"></div><div class="line">redis-server redis.conf</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/run_redis_master.png" alt="run_redis_master"></p>
+<h2 id="redis从数据库节点配置"><a href="#redis从数据库节点配置" class="headerlink" title="redis从数据库节点配置"></a>redis从数据库节点配置</h2><p>与上文类似，<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker inspect --format <span class="string">"&#123;&#123; .Mounts&#125;&#125;"</span> redis-slave1</div><div class="line"></div><div class="line">[&#123;7308e07b7e83737348ebf0e8a7b65bf637bb160d391bca5eb81f9b9c081e96ec /var/lib/docker/volumes/7308e07b7e83737348ebf0e8a7b65bf637bb160d391bca5eb81f9b9c081e96ec/_data /data <span class="built_in">local</span> <span class="literal">true</span>&#125;]</div><div class="line"></div><div class="line"><span class="built_in">cd</span> /var/lib/docker/volumes/7308e07b7e83737348ebf0e8a7b65bf637bb160d391bca5eb81f9b9c081e96ec/_data</div><div class="line"></div><div class="line">cp /home/grug/redis.conf .</div><div class="line"></div><div class="line">vim redis.conf</div></pre></td></tr></table></figure></p>
+<p>修改以下<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">daemonize yes</div><div class="line">#这里的msater是redis-master的别名</div><div class="line">slaveof master 6397</div></pre></td></tr></table></figure></p>
+<p>在<span style="color: #ff0000;">redis-slave1容器</span>中 <span style="color: #000000;">拷贝redis.conf并启动redis-slave1.</span></p>
+<p>redis-slave2同理。</p>
+<p><strong>测试redis</strong></p>
+<p>在redis-master中添加数据</p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/query_master.png" alt="query_master"></p>
+<p>在redis-slave1和redis-slave2中查询。</p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/query_slave1.png" alt="query_slave1"></p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/query_slave2.png" alt="query_slave2"></p>
+<h2 id="APP容器节点（Django）配置"><a href="#APP容器节点（Django）配置" class="headerlink" title="APP容器节点（Django）配置"></a>APP容器节点（Django）配置</h2><p>在app容器中安装redis支持包<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># pip install redis</span></div></pre></td></tr></table></figure></p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/pip_install_redis.png" alt="pip_install_redis"></p>
+<p>测试安装包是否正确<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">root@88e49470951f:/<span class="comment"># python</span></div><div class="line">Python 3.4.3 (default, Oct 23 2015, 22:19:50)</div><div class="line">[GCC 4.9.2] on linux</div><div class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> <span class="keyword">for</span> more information.</div><div class="line">&gt;&gt;&gt; import redis</div><div class="line">&gt;&gt;&gt; <span class="built_in">print</span>(redis.__file__)</div><div class="line">/usr/<span class="built_in">local</span>/lib/python3.4/site-packages/redis/__init__.py</div></pre></td></tr></table></figure></p>
+<p>在<span style="color: #ff0000;">app容器中</span>创建应用<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">root@eb7b557050fd:/<span class="comment"># cd /usr/src/app/</span></div><div class="line">root@eb7b557050fd:/usr/src/app<span class="comment"># ls</span></div><div class="line">root@eb7b557050fd:/usr/src/app<span class="comment"># mkdir dockerweb</span></div><div class="line">root@eb7b557050fd:/usr/src/app<span class="comment"># ls</span></div><div class="line">dockerweb</div><div class="line">root@eb7b557050fd:/usr/src/app<span class="comment"># cd dockerweb/</span></div><div class="line">root@eb7b557050fd:/usr/src/app/dockerweb<span class="comment"># ls</span></div><div class="line">root@eb7b557050fd:/usr/src/app/dockerweb<span class="comment"># django-admin.py startproject redisweb</span></div><div class="line">root@eb7b557050fd:/usr/src/app/dockerweb<span class="comment"># ls</span></div><div class="line">redisweb</div><div class="line">root@eb7b557050fd:/usr/src/app/dockerweb<span class="comment"># cd redisweb/</span></div><div class="line">root@eb7b557050fd:/usr/src/app/dockerweb/redisweb<span class="comment"># ls</span></div><div class="line">manage.py redisweb</div><div class="line">root@eb7b557050fd:/usr/src/app/dockerweb/redisweb<span class="comment"># python manage.py startapp helloworld</span></div><div class="line">root@eb7b557050fd:/usr/src/app/dockerweb/redisweb<span class="comment"># ls</span></div><div class="line">helloworld manage.py redisweb</div><div class="line">root@eb7b557050fd:/usr/src/app/dockerweb/redisweb<span class="comment">#</span></div></pre></td></tr></table></figure></p>
+<p>在<span style="color: #ff0000;">主机</span>对应的挂载文件夹中修改文件<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[root@localhost helloworld]<span class="comment"># pwd</span></div><div class="line">/home/grug/Projects/Django/App1/dockerweb/redisweb/helloworld</div><div class="line">[root@localhost helloworld]<span class="comment"># ls</span></div><div class="line">admin.py __init__.py migrations models.py tests.py views.py</div><div class="line">[root@localhost helloworld]<span class="comment"># vim views.py</span></div></pre></td></tr></table></figure></p>
+<p>以下为view.py内容。 <strong><span style="color: #ff0000;">修改或者复制时，请注意缩进，python对缩进敏感。</span></strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</div><div class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</div><div class="line"></div><div class="line"><span class="comment"># Create your views here.</span></div><div class="line"><span class="keyword">import</span> redis</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(request)</span>:</span></div><div class="line">    str=redis.__file__</div><div class="line">    str+=<span class="string">"&amp;lt;br&amp;gt;"</span></div><div class="line">    r = redis.Redis(host=<span class="string">'db'</span>,port=<span class="number">6379</span>,db=<span class="number">0</span>)</div><div class="line">    info = r.info()</div><div class="line">    str+=(<span class="string">"Set Hi &amp;lt;br&amp;gt;"</span>)</div><div class="line">    r.set(<span class="string">'Hi'</span>,<span class="string">'HelloWorld-APP1'</span>)</div><div class="line">    str+=(<span class="string">"Get Hi:%s &amp;lt;br&amp;gt;"</span> % r.get(<span class="string">'Hi'</span>))</div><div class="line">    str+=(<span class="string">"Redis Info:&amp;lt;br&amp;gt;"</span>)</div><div class="line">    str+=(<span class="string">"Key: Info Value"</span>)</div><div class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> info:</div><div class="line">        str+=(<span class="string">"%s: %s &amp;lt;br&amp;gt;"</span> % (key,info[key]))</div><div class="line">    <span class="keyword">return</span> HttpResponse(str)</div></pre></td></tr></table></figure>
+<p>修改redisweb 项目中的setting.py<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[root@localhost redisweb]<span class="comment"># ls</span></div><div class="line">__init__.py __pycache__ settings.py urls.py wsgi.py</div><div class="line">[root@localhost redisweb]<span class="comment"># vim settings.py</span></div></pre></td></tr></table></figure></p>
+<p>以下为settings.py <span style="color: #ff0000;">要修改</span>的内容<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line">INSTALLED_APPS = (</div><div class="line"><span class="string">'django.contrib.admin'</span>,</div><div class="line"><span class="string">'django.contrib.auth'</span>,</div><div class="line"><span class="string">'django.contrib.contenttypes'</span>,</div><div class="line"><span class="string">'django.contrib.sessions'</span>,</div><div class="line"><span class="string">'django.contrib.messages'</span>,</div><div class="line"><span class="string">'django.contrib.staticfiles'</span>,</div><div class="line"><span class="string">'helloworld'</span>,</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[root@localhost redisweb]<span class="comment"># vim urls.py</span></div></pre></td></tr></table></figure>
+<p>以下为urls.py的内容<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> include, url</div><div class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</div><div class="line"><span class="keyword">from</span> helloworld.views <span class="keyword">import</span> hello</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, include(admin.site.urls)),</div><div class="line">    url(<span class="string">r'^helloworld$'</span>,hello),</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>在<span style="color: #ff0000;">APP1的容器</span>中执行</p>
+<p>目录为/usr/src/app/dockerweb/redisweb<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">root@eb7b557050fd:/usr/src/app/dockerweb/redisweb<span class="comment"># python manage.py makemigrations</span></div><div class="line">No changes detected</div><div class="line">root@eb7b557050fd:/usr/src/app/dockerweb/redisweb<span class="comment"># python manage.py migrate</span></div><div class="line">Operations to perform:</div><div class="line">Synchronize unmigrated apps: staticfiles, messages</div><div class="line">Apply all migrations: admin, contenttypes, auth, sessions</div><div class="line">Synchronizing apps without migrations:</div><div class="line">Creating tables...</div><div class="line">Running deferred SQL...</div><div class="line">Installing custom SQL...</div><div class="line">Running migrations:</div><div class="line">Rendering model states... DONE</div><div class="line">Applying contenttypes.0001_initial... OK</div><div class="line">Applying auth.0001_initial... OK</div><div class="line">Applying admin.0001_initial... OK</div><div class="line">Applying contenttypes.0002_remove_content_type_name... OK</div><div class="line">Applying auth.0002_alter_permission_name_max_length... OK</div><div class="line">Applying auth.0003_alter_user_email_max_length... OK</div><div class="line">Applying auth.0004_alter_user_username_opts... OK</div><div class="line">Applying auth.0005_alter_user_last_login_null... OK</div><div class="line">Applying auth.0006_require_contenttypes_0002... OK</div><div class="line">Applying sessions.0001_initial... OK</div><div class="line">root@eb7b557050fd:/usr/src/app/dockerweb/redisweb<span class="comment"># python manage.py syncdb</span></div><div class="line">/usr/<span class="built_in">local</span>/lib/python3.4/site-packages/django/core/management/commands/syncdb.py:24: RemovedInDjango19Warning: The syncdb <span class="built_in">command</span> will be removed <span class="keyword">in</span> Django 1.9</div><div class="line">warnings.warn(<span class="string">"The syncdb command will be removed in Django 1.9"</span>, RemovedInDjango19Warning)</div><div class="line"></div><div class="line">Operations to perform:</div><div class="line">Synchronize unmigrated apps: messages, staticfiles</div><div class="line">Apply all migrations: auth, contenttypes, sessions, admin</div><div class="line">Synchronizing apps without migrations:</div><div class="line">Creating tables...</div><div class="line">Running deferred SQL...</div><div class="line">Installing custom SQL...</div><div class="line">Running migrations:</div><div class="line">No migrations to apply.</div><div class="line"></div><div class="line">You have installed Django<span class="string">'s auth system, and don'</span>t have any superusers defined.</div><div class="line">Would you like to create one now? (yes/no): yes</div><div class="line">Username (leave blank to use <span class="string">'root'</span>): admin</div><div class="line">Email address: grug@glovee.net</div><div class="line">Password:</div><div class="line">Password (again):</div><div class="line">Superuser created successfully.</div></pre></td></tr></table></figure></p>
+<p>配置APP2同上，<span style="color: #ff0000;">需要把文件内容的“APP1”替换为“APP2”</span></p>
+<p>启动APPweb服务器</p>
+<p><span style="color: #ff0000;">在APP1容器</span>中执行<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">root@eb7b557050fd:/usr/src/app/dockerweb/redisweb<span class="comment"># python manage.py runserver 0.0.0.0:8001</span></div><div class="line">Performing system checks...</div><div class="line"></div><div class="line">System check identified no issues (0 silenced).</div><div class="line">November 12, 2015 - 02:31:04</div><div class="line">Django version 1.8.6, using settings <span class="string">'redisweb.settings'</span></div><div class="line">Starting development server at http://0.0.0.0:8001/</div><div class="line">Quit the server with CONTROL-C.</div></pre></td></tr></table></figure></p>
+<p>在APP2<span style="color: #ff0000;">容器中</span>执行<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">root@88e49470951f:/usr/src/app/dockerweb/redisweb<span class="comment"># python manage.py runserver 0.0.0.0:8002</span></div><div class="line">Performing system checks...</div><div class="line"></div><div class="line">System check identified no issues (0 silenced).</div><div class="line">November 12, 2015 - 02:34:54</div><div class="line">Django version 1.8.6, using settings <span class="string">'redisweb.settings'</span></div><div class="line">Starting development server at http://0.0.0.0:8002/</div><div class="line">Quit the server with CONTROL-C.</div></pre></td></tr></table></figure></p>
+<p>到这里APP配置完毕。</p>
+<h2 id="HAProxy节点配置"><a href="#HAProxy节点配置" class="headerlink" title="HAProxy节点配置"></a>HAProxy节点配置</h2><p>配置HAProxy实现负载均衡。</p>
+<p>修改HAProxy在主机上挂载文件夹内的文件<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[root@localhost HAProxy]<span class="comment"># vim haproxy.cfg</span></div></pre></td></tr></table></figure></p>
+<p>以下为haproxy.cfg内容<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">global</div><div class="line">log 127.0.0.1 local0 #配置日志输出</div><div class="line">maxconn 4096 #最大连接数</div><div class="line">chroot /usr/local/sbin #改变当前工作目录</div><div class="line">daemon #以后台形式运行</div><div class="line">nbproc 4 #启动4个实例</div><div class="line">pidfile /usr/local/sbin/haproxy.pid #pid文件位置</div><div class="line">defaults</div><div class="line">log 127.0.0.1 local3</div><div class="line">mode http #｛tcp|http|health｝设定启动实例协议类型</div><div class="line">option dontlognull #保证HAProxy不记录上级负载均衡发送来用于检测状态没有数据的心跳包</div><div class="line">option redispatch #当serverId对应的服务器挂掉后，强制定向到其它健康的服务器</div><div class="line">retries 2 #重试两次连接失败就认为服务器不可用，主要通过后面的check检查</div><div class="line">maxconn 2000</div><div class="line">balance roundrobin #负载均衡算法，roundrobin表示轮询，source表示按照IP</div><div class="line">timeout connect 5000ms #连接超时时间</div><div class="line">timeout client 50000ms #客户端连接超时时间</div><div class="line">timeout server 50000ms #服务器端连接超时时间</div><div class="line">listen redis_proxy</div><div class="line">bind 0.0.0.0:6301</div><div class="line">stats enable</div><div class="line">stats uri /haproxy-stats</div><div class="line">server APP1 APP1:8001 check inter 2000 rise 2 fall 5</div><div class="line">server APP2 APP2:8002 check inter 2000 rise 2 fall 5</div></pre></td></tr></table></figure></p>
+<p>在HAProxy容器中复制文件，启动HAProxy<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">root@78f14ac2461b:/usr/<span class="built_in">local</span>/sbin<span class="comment"># cp /tmp/haproxy.cfg .</span></div><div class="line">root@78f14ac2461b:/usr/<span class="built_in">local</span>/sbin<span class="comment"># ls</span></div><div class="line">haproxy haproxy-systemd-wrapper haproxy.cfg</div><div class="line">root@78f14ac2461b:/usr/<span class="built_in">local</span>/sbin<span class="comment"># haproxy -f haproxy.cfg</span></div><div class="line">[WARNING] 315/032723 (12) : Proxy <span class="string">'redis_proxy'</span>: <span class="keyword">in</span> multi-process mode, stats will be limited to process assigned to the current request.</div></pre></td></tr></table></figure></p>
+<p>本地访问</p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/app1-view.png" alt="app1-view"></p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/app2_view.png" alt="app2_view"></p>
+<p>附件列表</p>
+<p>redis-slave的配置文件<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># By default Redis does not run as a daemon. Use &apos;yes&apos; if you need it.</div><div class="line"># Note that Redis will write a pid file in /var/run/redis.pid when daemonized.</div><div class="line">#Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程（守护进程（daemon）是指在UNIX或其他多任务操作系统中在后台执行的电脑程序，并不会接受电脑用户的直接操控。）</div><div class="line">daemonize yes</div><div class="line"></div><div class="line"># When running daemonized, Redis writes a pid file in /var/run/redis.pid by</div><div class="line"># default. You can specify a custom pid file location here.</div><div class="line">#当 Redis 以守护进程的方式运行的时候,Redis 默认会把 pid 文件放在/var/run/redis.pid,你可以配置到其他地址。当运行多个 redis 服务时,需要指定不同的 pid 文件和端口</div><div class="line">pidfile /var/run/redis.pid</div><div class="line"></div><div class="line"># Accept connections on the specified port, default is 6379.</div><div class="line"># If port 0 is specified Redis will not listen on a TCP socket.</div><div class="line">#端口没什么好说的</div><div class="line">port 6379</div><div class="line"></div><div class="line"># If you want you can bind a single interface, if the bind option is not</div><div class="line"># specified all the interfaces will listen for incoming connections.</div><div class="line">#指定Redis可接收请求的IP地址,不设置将处理所有请求,建议生产环境中设置</div><div class="line"># bind 127.0.0.1</div><div class="line"></div><div class="line"># Close the connection after a client is idle for N seconds (0 to disable)</div><div class="line">#客户端连接的超时时间,单位为秒,超时后会关闭连接</div><div class="line">timeout 0</div><div class="line"></div><div class="line"># Specify the log file name. Also &apos;stdout&apos; can be used to force</div><div class="line"># Redis to log on the standard output. Note that if you use standard</div><div class="line"># output for logging but daemonize, logs will be sent to /dev/null</div><div class="line">#配置 log 文件地址,默认打印在命令行终端的窗口上</div><div class="line">logfile stdout</div><div class="line"></div><div class="line"># Set the number of databases. The default database is DB 0, you can select</div><div class="line"># a different one on a per-connection basis using SELECT &amp;lt;dbid&amp;gt; where</div><div class="line"># dbid is a number between 0 and &apos;databases&apos;-1</div><div class="line">#设置数据库的个数,可以使用 SELECT &amp;lt;dbid&amp;gt;命令来切换数据库。默认使用的数据库是 0</div><div class="line">databases 16</div><div class="line"></div><div class="line">#</div><div class="line"># Save the DB on disk:</div><div class="line">#</div><div class="line"># save &amp;lt;seconds&amp;gt; &amp;lt;changes&amp;gt;</div><div class="line">#</div><div class="line"># Will save the DB if both the given number of seconds and the given</div><div class="line"># number of write operations against the DB occurred.</div><div class="line">#</div><div class="line"># In the example below the behaviour will be to save:</div><div class="line"># after 900 sec (15 min) if at least 1 key changed</div><div class="line"># after 300 sec (5 min) if at least 10 keys changed</div><div class="line"># after 60 sec if at least 10000 keys changed</div><div class="line">#</div><div class="line"># Note: you can disable saving at all commenting all the &quot;save&quot; lines.</div><div class="line">#设置 Redis 进行数据库镜像的频率。</div><div class="line">#900秒之内有1个keys发生变化时</div><div class="line">#30秒之内有10个keys发生变化时</div><div class="line">#60秒之内有10000个keys发生变化时</div><div class="line">save 900 1</div><div class="line">save 300 10</div><div class="line">save 60 10000</div><div class="line"></div><div class="line"># Compress string objects using LZF when dump .rdb databases?</div><div class="line"># For default that&apos;s set to &apos;yes&apos; as it&apos;s almost always a win.</div><div class="line"># If you want to save some CPU in the saving child set it to &apos;no&apos; but</div><div class="line"># the dataset will likely be bigger if you have compressible values or keys.</div><div class="line">#在进行镜像备份时,是否进行压缩</div><div class="line">rdbcompression yes</div><div class="line"></div><div class="line"># The filename where to dump the DB</div><div class="line">#镜像备份文件的文件名</div><div class="line">dbfilename dump.rdb</div><div class="line"></div><div class="line"># The working directory.</div><div class="line">#</div><div class="line"># The DB will be written inside this directory, with the filename specified</div><div class="line"># above using the &apos;dbfilename&apos; configuration directive.</div><div class="line">#</div><div class="line"># Also the Append Only File will be created inside this directory.</div><div class="line">#</div><div class="line"># Note that you must specify a directory here, not a file name.</div><div class="line">#数据库镜像备份的文件放置的路径。这里的路径跟文件名要分开配置是因为 Redis 在进行备份时,先会将当前数据库的状态写入到一个临时文件中,等备份完成时,再把该该临时文件替换为上面所指定的文件,</div><div class="line">#而这里的临时文件和上面所配置的备份文件都会放在这个指定的路径当中</div><div class="line">dir ./</div><div class="line"></div><div class="line"># Master-Slave replication. Use slaveof to make a Redis instance a copy of</div><div class="line"># another Redis server. Note that the configuration is local to the slave</div><div class="line"># so for example it is possible to configure the slave to save the DB with a</div><div class="line"># different interval, or to listen to another port, and so on.</div><div class="line">#设置该数据库为其他数据库的从数据库</div><div class="line"># slaveof &amp;lt;masterip&amp;gt; &amp;lt;masterport&amp;gt;</div><div class="line">slaveof master 6379</div><div class="line"># If the master is password protected (using the &quot;requirepass&quot; configuration</div><div class="line"># directive below) it is possible to tell the slave to authenticate before</div><div class="line"># starting the replication synchronization process, otherwise the master will</div><div class="line"># refuse the slave request.</div><div class="line">#指定与主数据库连接时需要的密码验证</div><div class="line"># masterauth &amp;lt;master-password&amp;gt;</div><div class="line"></div><div class="line"># Require clients to issue AUTH &amp;lt;PASSWORD&amp;gt; before processing any other</div><div class="line"># commands. This might be useful in environments in which you do not trust</div><div class="line"># others with access to the host running redis-server.</div><div class="line">#</div><div class="line"># This should stay commented out for backward compatibility and because most</div><div class="line"># people do not need auth (e.g. they run their own servers).</div><div class="line">#</div><div class="line"># Warning: since Redis is pretty fast an outside user can try up to</div><div class="line"># 150k passwords per second against a good box. This means that you should</div><div class="line"># use a very strong password otherwise it will be very easy to break.</div><div class="line">#设置客户端连接后进行任何其他指定前需要使用的密码。</div><div class="line">#警告:redis速度相当快,一个外部的用户可以在一秒钟进行150K次的密码尝试,你需要指定非常非常强大的密码来防止暴力破解。</div><div class="line"></div><div class="line"># requirepass foobared</div><div class="line"># Set the max number of connected clients at the same time. By default there</div><div class="line"># is no limit, and it&apos;s up to the number of file descriptors the Redis process</div><div class="line"># is able to open. The special value &apos;0&apos; means no limits.</div><div class="line"># Once the limit is reached Redis will close all the new connections sending</div><div class="line"># an error &apos;max number of clients reached&apos;.</div><div class="line">#限制同时连接的客户数量。当连接数超过这个值时,redis 将不再接收其他连接请求,客户端尝试连接时将收到 error 信息</div><div class="line"># maxclients 128</div><div class="line"></div><div class="line"># Don&apos;t use more memory than the specified amount of bytes.</div><div class="line"># When the memory limit is reached Redis will try to remove keys</div><div class="line"># accordingly to the eviction policy selected (see maxmemmory-policy).</div><div class="line">#</div><div class="line"># If Redis can&apos;t remove keys according to the policy, or if the policy is</div><div class="line"># set to &apos;noeviction&apos;, Redis will start to reply with errors to commands</div><div class="line"># that would use more memory, like SET, LPUSH, and so on, and will continue</div><div class="line"># to reply to read-only commands like GET.</div><div class="line">#</div><div class="line"># This option is usually useful when using Redis as an LRU cache, or to set</div><div class="line"># an hard memory limit for an instance (using the &apos;noeviction&apos; policy).</div><div class="line">#</div><div class="line"># WARNING: If you have slaves attached to an instance with maxmemory on,</div><div class="line"># the size of the output buffers needed to feed the slaves are subtracted</div><div class="line"># from the used memory count, so that network problems / resyncs will</div><div class="line"># not trigger a loop where keys are evicted, and in turn the output</div><div class="line"># buffer of slaves is full with DELs of keys evicted triggering the deletion</div><div class="line"># of more keys, and so forth until the database is completely emptied.</div><div class="line">#</div><div class="line"># In short… if you have slaves attached it is suggested that you set a lower</div><div class="line"># limit for maxmemory so that there is some free RAM on the system for slave</div><div class="line"># output buffers (but this is not needed if the policy is &apos;noeviction&apos;).</div><div class="line">#设置redis能够使用的最大内存。当内存满了的时候,如果还接收到set命令,redis将先尝试剔除设置过expire信息的key,而不管该key的过期时间还没有到达。</div><div class="line">#在删除时,将按照过期时间进行删除,最早将要被过期的key将最先被删除。如果带有expire信息的key都删光了,那么将返回错误。</div><div class="line">#这样,redis将不再接收写请求,只接收get请求。maxmemory的设置比较适合于把redis当作于类似memcached 的缓存来使用</div><div class="line"># maxmemory &amp;lt;bytes&amp;gt;</div><div class="line"></div><div class="line"># By default Redis asynchronously dumps the dataset on disk. If you can live</div><div class="line"># with the idea that the latest records will be lost if something like a crash</div><div class="line"># happens this is the preferred way to run Redis. If instead you care a lot</div><div class="line"># about your data and don&apos;t want to that a single record can get lost you should</div><div class="line"># enable the append only mode: when this mode is enabled Redis will append</div><div class="line"># every write operation received in the file appendonly.aof. This file will</div><div class="line"># be read on startup in order to rebuild the full dataset in memory.</div><div class="line">#</div><div class="line"># Note that you can have both the async dumps and the append only file if you</div><div class="line"># like (you have to comment the &quot;save&quot; statements above to disable the dumps).</div><div class="line"># Still if append only mode is enabled Redis will load the data from the</div><div class="line"># log file at startup ignoring the dump.rdb file.</div><div class="line">#</div><div class="line"># IMPORTANT: Check the BGREWRITEAOF to check how to rewrite the append</div><div class="line"># log file in background when it gets too big.</div><div class="line">#默认情况下,redis 会在后台异步的把数据库镜像备份到磁盘,但是该备份是非常耗时的,而且备份也不能很频繁,如果发生诸如拉闸限电、拔插头等状况,那么将造成比较大范围的数据丢失。</div><div class="line">#所以redis提供了另外一种更加高效的数据库备份及灾难恢复方式。</div><div class="line">#开 启append only 模式之后,redis 会把所接收到的每一次写操作请求都追加到appendonly.aof 文件中,当redis重新启动时,会从该文件恢复出之前的状态。</div><div class="line">#但是这样会造成 appendonly.aof 文件过大,所以redis还支持了BGREWRITEAOF 指令,对appendonly.aof进行重新整理</div><div class="line">appendonly no</div><div class="line"></div><div class="line"># The fsync() call tells the Operating System to actually write data on disk</div><div class="line"># instead to wait for more data in the output buffer. Some OS will really flush</div><div class="line"># data on disk, some other OS will just try to do it ASAP.</div><div class="line">#</div><div class="line"># Redis supports three different modes:</div><div class="line">#</div><div class="line"># no: don&apos;t fsync, just let the OS flush the data when it wants. Faster.</div><div class="line"># always: fsync after every write to the append only log . Slow, Safest.</div><div class="line"># everysec: fsync only if one second passed since the last fsync. Compromise.</div><div class="line">#</div><div class="line"># The default is &quot;everysec&quot; that&apos;s usually the right compromise between</div><div class="line"># speed and data safety. It&apos;s up to you to understand if you can relax this to</div><div class="line"># &quot;no&quot; that will will let the operating system flush the output buffer when</div><div class="line"># it wants, for better performances (but if you can live with the idea of</div><div class="line"># some data loss consider the default persistence mode that&apos;s snapshotting),</div><div class="line"># or on the contrary, use &quot;always&quot; that&apos;s very slow but a bit safer than</div><div class="line"># everysec.</div><div class="line">#</div><div class="line"># If unsure, use &quot;everysec&quot;.</div><div class="line">#设置对 appendonly.aof 文件进行同步的频率。always 表示每次有写操作都进行同步,everysec 表示对写操作进行累积,每秒同步一次。</div><div class="line"># appendfsync always</div><div class="line">appendfsync everysec</div><div class="line"># appendfsync no</div><div class="line"></div><div class="line"># Virtual Memory allows Redis to work with datasets bigger than the actual</div><div class="line"># amount of RAM needed to hold the whole dataset in memory.</div><div class="line"># In order to do so very used keys are taken in memory while the other keys</div><div class="line"># are swapped into a swap file, similarly to what operating systems do</div><div class="line"># with memory pages.</div><div class="line">#</div><div class="line"># To enable VM just set &apos;vm-enabled&apos; to yes, and set the following three</div><div class="line"># VM parameters accordingly to your needs.</div><div class="line">#是否开启虚拟内存支持。因为 redis 是一个内存数据库,而且当内存满的时候,无法接收新的写请求,所以在redis2.0中,提供了虚拟内存的支持。</div><div class="line">#但是需要注意的是,redis中,所有的key都会放在内存中,在内存不够时,只会把value 值放入交换区。</div><div class="line">#这样保证了虽然使用虚拟内存,但性能基本不受影响,同时,你需要注意的是你要把vm-max-memory设置到足够来放下你的所有的key</div><div class="line">#vm-enabled no</div><div class="line"># vm-enabled yes</div><div class="line"></div><div class="line"># This is the path of the Redis swap file. As you can guess, swap files</div><div class="line"># can&apos;t be shared by different Redis instances, so make sure to use a swap</div><div class="line"># file for every redis process you are running. Redis will complain if the</div><div class="line"># swap file is already in use.</div><div class="line">#</div><div class="line"># The best kind of storage for the Redis swap file (that&apos;s accessed at random)</div><div class="line"># is a Solid State Disk (SSD).</div><div class="line">#</div><div class="line"># *** WARNING *** if you are using a shared hosting the default of putting</div><div class="line"># the swap file under /tmp is not secure. Create a dir with access granted</div><div class="line"># only to Redis user and configure Redis to create the swap file there.</div><div class="line">#设置虚拟内存的交换文件路径</div><div class="line">#vm-swap-file /tmp/redis.swap</div><div class="line"></div><div class="line"># vm-max-memory configures the VM to use at max the specified amount of</div><div class="line"># RAM. Everything that deos not fit will be swapped on disk *if* possible, that</div><div class="line"># is, if there is still enough contiguous space in the swap file.</div><div class="line">#</div><div class="line"># With vm-max-memory 0 the system will swap everything it can. Not a good</div><div class="line"># default, just specify the max amount of RAM you can in bytes, but it&apos;s</div><div class="line"># better to leave some margin. For instance specify an amount of RAM</div><div class="line"># that&apos;s more or less between 60 and 80% of your free RAM.</div><div class="line">#这里设置开启虚拟内存之后,redis将使用的最大物理内存的大小。默认为0,redis将把他所有的能放到交换文件的都放到交换文件中,以尽量少的使用物理内存。</div><div class="line">#在生产环境下,需要根据实际情况设置该值,最好不要使用默认的 0</div><div class="line">#vm-max-memory 0</div><div class="line"></div><div class="line"># Redis swap files is split into pages. An object can be saved using multiple</div><div class="line"># contiguous pages, but pages can&apos;t be shared between different objects.</div><div class="line"># So if your page is too big, small objects swapped out on disk will waste</div><div class="line"># a lot of space. If you page is too small, there is less space in the swap</div><div class="line"># file (assuming you configured the same number of total swap file pages).</div><div class="line">#</div><div class="line"># If you use a lot of small objects, use a page size of 64 or 32 bytes.</div><div class="line"># If you use a lot of big objects, use a bigger page size.</div><div class="line"># If unsure, use the default</div><div class="line">#设置虚拟内存的页大小,如果你的 value 值比较大,比如说你要在 value 中放置博客、新闻之类的所有文章内容,就设大一点,如果要放置的都是很小的内容,那就设小一点</div><div class="line">#vm-page-size 32</div><div class="line"></div><div class="line"># Number of total memory pages in the swap file.</div><div class="line"># Given that the page table (a bitmap of free/used pages) is taken in memory,</div><div class="line"># every 8 pages on disk will consume 1 byte of RAM.</div><div class="line">#</div><div class="line"># The total swap size is vm-page-size * vm-pages</div><div class="line">#</div><div class="line"># With the default of 32-bytes memory pages and 134217728 pages Redis will</div><div class="line"># use a 4 GB swap file, that will use 16 MB of RAM for the page table.</div><div class="line">#</div><div class="line"># It&apos;s better to use the smallest acceptable value for your application,</div><div class="line"># but the default is large in order to work in most conditions.</div><div class="line">#设置交换文件的总的 page 数量,需要注意的是,page table信息会放在物理内存中,每8个page 就会占据RAM中的 1 个 byte。</div><div class="line">#总的虚拟内存大小 = vm-page-size * vm-pages</div><div class="line">#vm-pages 134217728</div><div class="line"></div><div class="line"># Max number of VM I/O threads running at the same time.</div><div class="line"># This threads are used to read/write data from/to swap file, since they</div><div class="line"># also encode and decode objects from disk to memory or the reverse, a bigger</div><div class="line"># number of threads can help with big objects even if they can&apos;t help with</div><div class="line"># I/O itself as the physical device may not be able to couple with many</div><div class="line"># reads/writes operations at the same time.</div><div class="line">#</div><div class="line"># The special value of 0 turn off threaded I/O and enables the blocking</div><div class="line"># Virtual Memory implementation.</div><div class="line">#设置 VM IO 同时使用的线程数量。</div><div class="line">#vm-max-threads 4</div><div class="line"></div><div class="line"># Hashes are encoded in a special way (much more memory efficient) when they</div><div class="line"># have at max a given numer of elements, and the biggest element does not</div><div class="line"># exceed a given threshold. You can configure this limits with the following</div><div class="line"># configuration directives.</div><div class="line">#redis 2.0 中引入了 hash 数据结构。</div><div class="line">#hash 中包含超过指定元素个数并且最大的元素当没有超过临界时,hash 将以zipmap(又称为 small hash大大减少内存使用)来存储,这里可以设置这两个临界值</div><div class="line">#hash-max-zipmap-entries 512</div><div class="line">#hash-max-zipmap-value 64</div><div class="line"></div><div class="line"># Active rehashing uses 1 millisecond every 100 milliseconds of CPU time in</div><div class="line"># order to help rehashing the main Redis hash table (the one mapping top-level</div><div class="line"># keys to values). The hash table implementation redis uses (see dict.c)</div><div class="line"># performs a lazy rehashing: the more operation you run into an hash table</div><div class="line"># that is rhashing, the more rehashing &quot;steps&quot; are performed, so if the</div><div class="line"># server is idle the rehashing is never complete and some more memory is used</div><div class="line"># by the hash table.</div><div class="line">#</div><div class="line"># The default is to use this millisecond 10 times every second in order to</div><div class="line"># active rehashing the main dictionaries, freeing memory when possible.</div><div class="line">#</div><div class="line"># If unsure:</div><div class="line"># use &quot;activerehashing no&quot; if you have hard latency requirements and it is</div><div class="line"># not a good thing in your environment that Redis can reply form time to time</div><div class="line"># to queries with 2 milliseconds delay.</div><div class="line">#</div><div class="line"># use &quot;activerehashing yes&quot; if you don&apos;t have such hard requirements but</div><div class="line"># want to free memory asap when possible.</div><div class="line">#开启之后,redis 将在每 100 毫秒时使用 1 毫秒的 CPU 时间来对 redis 的 hash 表进行重新 hash,可以降低内存的使用。</div><div class="line">#当你的使用场景中,有非常严格的实时性需要,不能够接受 Redis 时不时的对请求有 2 毫秒的延迟的话,把这项配置为 no。</div><div class="line">#如果没有这么严格的实时性要求,可以设置为 yes,以便能够尽可能快的释放内存</div><div class="line">activerehashing yes</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag">#docker</a>
+          
+            <a href="/tags/docker容器云/" rel="tag">#docker容器云</a>
+          
+            <a href="/tags/docker应用栈/" rel="tag">#docker应用栈</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/27/create-docker-container-from-dockerfile/" rel="next" title="从Dockfile创建一个镜像">
+                <i class="fa fa-chevron-left"></i> 从Dockfile创建一个镜像
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/23/create-docker-cluster-with-docker-machine/" rel="prev" title="Docker Swarm实战（1）-以Docker Machine建立docker集群">
+                Docker Swarm实战（1）-以Docker Machine建立docker集群 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/11/12/docker-app-stack/"
+     data-title="Docker单机应用栈"
+     data-content=""
+     data-url="http://grug.tech/2015/11/12/docker-app-stack/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/11/12/docker-app-stack/"
+           data-title="Docker单机应用栈" data-url="http://grug.tech/2015/11/12/docker-app-stack/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/s-l300.jpg"
+               alt="Grug" />
+          <p class="site-author-name" itemprop="name">Grug</p>
+          <p class="site-description motion-element" itemprop="description">专注技术-快乐生活</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#拉取镜像"><span class="nav-number">1.</span> <span class="nav-text">拉取镜像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#容器启动顺序为："><span class="nav-number">2.</span> <span class="nav-text">容器启动顺序为：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动容器节点"><span class="nav-number">3.</span> <span class="nav-text">启动容器节点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#容器节点配置"><span class="nav-number">4.</span> <span class="nav-text">容器节点配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#redis主数据库节点配置"><span class="nav-number">4.1.</span> <span class="nav-text">redis主数据库节点配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis从数据库节点配置"><span class="nav-number">4.2.</span> <span class="nav-text">redis从数据库节点配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APP容器节点（Django）配置"><span class="nav-number">4.3.</span> <span class="nav-text">APP容器节点（Django）配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAProxy节点配置"><span class="nav-number">4.4.</span> <span class="nav-text">HAProxy节点配置</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Grug</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"grug-tech"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("YhU32fJzpgFNnCdphqLyrn6t-gzGzoHsz", "2KFG5TVloy8WD2Tpd6pf10Vl");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
