@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="svn," />
+  <meta name="keywords" content="mysql," />
 
 
 
@@ -84,21 +84,27 @@
 
 
 
-<meta name="description" content="安装subversion# yum install subversion
-新建版本库文件目录# mkdir /var/svn/rep">
+<meta name="description" content="下载镜像docker pull index.alauda.cn/library/mysql
+第一种方式启动docker run --name mysql -e MYSQL_ROOT_PASSWORD=mysql -d -p 3306:3306 index.alauda.cn/library/mysql
+其中：–name指定容器名称">
 <meta property="og:type" content="article">
-<meta property="og:title" content="centos7搭建svn服务器">
-<meta property="og:url" content="http://grug.tech/2015/10/27/create-svnserver-in-centos7/index.html">
+<meta property="og:title" content="docker 安装mysql">
+<meta property="og:url" content="http://grug.tech/2015/11/09/docker-install-mysql/index.html">
 <meta property="og:site_name" content="Grug Code Life">
-<meta property="og:description" content="安装subversion# yum install subversion
-新建版本库文件目录# mkdir /var/svn/rep">
-<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/svntest.png">
-<meta property="og:updated_time" content="2016-09-23T05:46:24.000Z">
+<meta property="og:description" content="下载镜像docker pull index.alauda.cn/library/mysql
+第一种方式启动docker run --name mysql -e MYSQL_ROOT_PASSWORD=mysql -d -p 3306:3306 index.alauda.cn/library/mysql
+其中：–name指定容器名称">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/20151109140125.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/my.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/20151109141236.png">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/20151109141339.png">
+<meta property="og:updated_time" content="2016-09-23T10:26:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="centos7搭建svn服务器">
-<meta name="twitter:description" content="安装subversion# yum install subversion
-新建版本库文件目录# mkdir /var/svn/rep">
-<meta name="twitter:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/svntest.png">
+<meta name="twitter:title" content="docker 安装mysql">
+<meta name="twitter:description" content="下载镜像docker pull index.alauda.cn/library/mysql
+第一种方式启动docker run --name mysql -e MYSQL_ROOT_PASSWORD=mysql -d -p 3306:3306 index.alauda.cn/library/mysql
+其中：–name指定容器名称">
+<meta name="twitter:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/20151109140125.png">
 
 
 
@@ -119,9 +125,9 @@
 
 
 
-  <link rel="canonical" href="http://grug.tech/2015/10/27/create-svnserver-in-centos7/"/>
+  <link rel="canonical" href="http://grug.tech/2015/11/09/docker-install-mysql/"/>
 
-  <title> centos7搭建svn服务器 | Grug Code Life </title>
+  <title> docker 安装mysql | Grug Code Life </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +263,7 @@
             
             
               
-                centos7搭建svn服务器
+                docker 安装mysql
               
             
           </h1>
@@ -269,8 +275,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-27T11:48:43+08:00" content="2015-10-27">
-              2015-10-27
+            <time itemprop="dateCreated" datetime="2015-11-09T14:19:11+08:00" content="2015-11-09">
+              2015-11-09
             </time>
           </span>
 
@@ -283,8 +289,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
                   </a>
                 </span>
 
@@ -295,8 +301,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/linux/svn/" itemprop="url" rel="index">
-                    <span itemprop="name">svn</span>
+                  <a href="/categories/docker/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
                   </a>
                 </span>
 
@@ -311,8 +317,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/27/create-svnserver-in-centos7/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/27/create-svnserver-in-centos7/" itemprop="commentsCount"></span>
+                <a href="/2015/11/09/docker-install-mysql/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/09/docker-install-mysql/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -322,7 +328,7 @@
 
           
           
-             <span id="/2015/10/27/create-svnserver-in-centos7/" class="leancloud_visitors" data-flag-title="centos7搭建svn服务器">
+             <span id="/2015/11/09/docker-install-mysql/" class="leancloud_visitors" data-flag-title="docker 安装mysql">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -344,18 +350,24 @@
       
 
       
-        <h1 id="安装subversion"><a href="#安装subversion" class="headerlink" title="安装subversion"></a>安装subversion</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># yum install subversion</span></div></pre></td></tr></table></figure>
-<h1 id="新建版本库文件目录"><a href="#新建版本库文件目录" class="headerlink" title="新建版本库文件目录"></a>新建版本库文件目录</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># mkdir /var/svn/rep</span></div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h1 id="新建版本库配置文件"><a href="#新建版本库配置文件" class="headerlink" title="新建版本库配置文件"></a>新建版本库配置文件</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># svnadmin create /var/svn/repo/</span></div></pre></td></tr></table></figure>
-<h1 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># vim /var/svn/repo/conf/authz</span></div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[aliases]</div><div class="line"># joe = /C=XZ/ST=Dessert/L=Snake City/O=Snake Oil, Ltd./OU=Research Institute/CN=Joe Average</div><div class="line"></div><div class="line">[groups]</div><div class="line"># harry_and_sally = harry,sally</div><div class="line"># harry_sally_and_joe = harry,sally,&amp;amp;joe</div><div class="line">admin=admin   #前面是组名，后面是组的成员</div><div class="line"># [/foo/bar]</div><div class="line"># harry = rw</div><div class="line"># &amp;amp;joe = r</div><div class="line"># * =</div><div class="line"></div><div class="line"># [repository:/baz/fuz]</div><div class="line"># @harry_and_sally = rw</div><div class="line"># * = r</div><div class="line"></div><div class="line">#这里一般写&quot;/&quot;是repo的根目录。</div><div class="line">[/]</div><div class="line">@admin=rw #组有读写的权限</div><div class="line">*=</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># vim /var/svn/repo/conf/passwd</span></div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[users]</div><div class="line"># harry = harryssecret</div><div class="line"># sally = sallyssecret</div><div class="line">admin=admin #用户名=密码</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#vim /var/svn/repo/conf/svnserve.conf</span></div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[general]</div><div class="line">### The anon-access and auth-access options control access to the</div><div class="line">### repository for unauthenticated (a.k.a. anonymous) users and</div><div class="line">### authenticated users, respectively.</div><div class="line">### Valid values are &quot;write&quot;, &quot;read&quot;, and &quot;none&quot;.</div><div class="line">### Setting the value to &quot;none&quot; prohibits both reading and writing;</div><div class="line">### &quot;read&quot; allows read-only access, and &quot;write&quot; allows complete</div><div class="line">### read/write access to the repository.</div><div class="line">### The sample settings below are the defaults and specify that anonymous</div><div class="line">### users have read-only access to the repository, while authenticated</div><div class="line">### users have read and write access to the repository.</div><div class="line">anon-access = none #匿名用户不能查看</div><div class="line">auth-access = write#授权用户可以读写</div><div class="line">### The password-db option controls the location of the password</div><div class="line">### database file. Unless you specify a path starting with a /,</div><div class="line">### the file&apos;s location is relative to the directory containing</div><div class="line">### this configuration file.</div><div class="line">### If SASL is enabled (see below), this file will NOT be used.</div><div class="line">### Uncomment the line below to use the default password file.</div><div class="line">password-db = passwd#用户认证文件</div><div class="line">### The authz-db option controls the location of the authorization</div><div class="line">### rules for path-based access control. Unless you specify a path</div><div class="line">### starting with a /, the file&apos;s location is relative to the the</div><div class="line">### directory containing this file. If you don&apos;t specify an</div><div class="line">### authz-db, no path-based access control is done.</div><div class="line">### Uncomment the line below to use the default authorization file.</div><div class="line">authz-db = authz#授权文件</div><div class="line">### This option specifies the authentication realm of the repository.</div><div class="line">### If two repositories have the same authentication realm, they should</div><div class="line">### have the same password database, and vice versa. The default realm</div><div class="line">### is repository&apos;s uuid.</div><div class="line">realm = /var/svn/repo#版本库</div><div class="line">### The force-username-case option causes svnserve to case-normalize</div><div class="line">### usernames before comparing them against the authorization rules in the</div><div class="line">### authz-db file configured above. Valid values are &quot;upper&quot; (to upper-</div><div class="line">### case the usernames), &quot;lower&quot; (to lowercase the usernames), and</div><div class="line">### &quot;none&quot; (to compare usernames as-is without case conversion, which</div><div class="line">### is the default behavior).</div><div class="line"># force-username-case = none</div></pre></td></tr></table></figure>
-<h1 id="启动版本库"><a href="#启动版本库" class="headerlink" title="启动版本库"></a>启动版本库</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># svnserve -d -r /var/svn/</span></div></pre></td></tr></table></figure>
-<h1 id="访问版本库"><a href="#访问版本库" class="headerlink" title="访问版本库"></a>访问版本库</h1><p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/svntest.png" alt="svntest"></p>
+        <h1 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker pull index.alauda.cn/library/mysql</div></pre></td></tr></table></figure>
+<h2 id="第一种方式启动"><a href="#第一种方式启动" class="headerlink" title="第一种方式启动"></a>第一种方式启动</h2><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker run --name mysql <span class="_">-e</span> MYSQL_ROOT_PASSWORD=mysql <span class="_">-d</span> -p 3306:3306 index.alauda.cn/library/mysql</div></pre></td></tr></table></figure>
+<p>其中：–name指定容器名称<br><a id="more"></a></p>
+<p>-e环境变量MYSQL_ROOT_PASSWORD指定mysql root用户的密码</p>
+<p>-p指定本地端口3306映射到容器端口3306</p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/20151109140125.png" alt="20151109140125"><br>可以通过客户端连接mysql  localhost:3306  user root  pwd mysql</p>
+<h2 id="第二种方式（挂载指定文件夹存储mysql文件）"><a href="#第二种方式（挂载指定文件夹存储mysql文件）" class="headerlink" title="第二种方式（挂载指定文件夹存储mysql文件）"></a>第二种方式（挂载指定文件夹存储mysql文件）</h2><p>由于第一种方式启动的容器，相关的mysql数据库文件在容器内部，不容易定位，可以使用下面的方法挂载指定的文件来存储。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker run --name new-mysql -v /home/grug/newmysql_data:/var/lib/mysql <span class="_">-e</span> MYSQL_ROOT_PASSWORD=mysql <span class="_">-d</span> -p 3306:3306 index.alauda.cn/library/mysql</div></pre></td></tr></table></figure></p>
+<p>其中：-v 表示挂载 “/home/grug/newmysql_data”文件到容器内部，来映射容器的“/var/lib/mysql”文件。</p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/my.png" alt="my"></p>
+<p><span style="color: #ff0000;">注意:要保证挂载的文件夹存在。若linux中有SElinux服务，则需要下面的操作，否则会启动失败</span>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">chcon -Rt svirt_sandbox_file_t /home/grug/newmysql_data</div></pre></td></tr></table></figure>
+<p>把上面的文件夹换成自己定义的文件夹。</p>
+<h2 id="第一种方式可以通过"><a href="#第一种方式可以通过" class="headerlink" title="第一种方式可以通过"></a>第一种方式可以通过</h2><pre><code class="bash">docker inspect mysql
+</code></pre>
+<p>定位mysql存储位置</p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/20151109141236.png" alt="20151109141236"></p>
+<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/20151109141339.png" alt="20151109141339"></p>
+<p>这样就定位到了mysql存放文件的真正位置。</p>
 
       
     </div>
@@ -378,7 +390,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/svn/" rel="tag">#svn</a>
+            <a href="/tags/mysql/" rel="tag">#mysql</a>
           
         </div>
       
@@ -387,16 +399,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/27/create-mailserver-in-centos7/" rel="next" title="centos7搭建邮件服务器">
-                <i class="fa fa-chevron-left"></i> centos7搭建邮件服务器
+              <a href="/2015/10/27/create-docker-container-from-dockerfile/" rel="next" title="从Dockfile创建一个镜像">
+                <i class="fa fa-chevron-left"></i> 从Dockfile创建一个镜像
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/27/create-docker-container-from-dockerfile/" rel="prev" title="从Dockfile创建一个镜像">
-                从Dockfile创建一个镜像 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/11/12/docker-app-stack/" rel="prev" title="Docker单机应用栈">
+                Docker单机应用栈 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -412,10 +424,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/10/27/create-svnserver-in-centos7/"
-     data-title="centos7搭建svn服务器"
+        <div class="ds-share flat" data-thread-key="2015/11/09/docker-install-mysql/"
+     data-title="docker 安装mysql"
      data-content=""
-     data-url="http://grug.tech/2015/10/27/create-svnserver-in-centos7/">
+     data-url="http://grug.tech/2015/11/09/docker-install-mysql/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -442,8 +454,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/10/27/create-svnserver-in-centos7/"
-           data-title="centos7搭建svn服务器" data-url="http://grug.tech/2015/10/27/create-svnserver-in-centos7/">
+      <div class="ds-thread" data-thread-key="2015/11/09/docker-install-mysql/"
+           data-title="docker 安装mysql" data-url="http://grug.tech/2015/11/09/docker-install-mysql/">
       </div>
     
   </div>
@@ -534,7 +546,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装subversion"><span class="nav-number">1.</span> <span class="nav-text">安装subversion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新建版本库文件目录"><span class="nav-number">2.</span> <span class="nav-text">新建版本库文件目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新建版本库配置文件"><span class="nav-number">3.</span> <span class="nav-text">新建版本库配置文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改配置文件"><span class="nav-number">4.</span> <span class="nav-text">修改配置文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动版本库"><span class="nav-number">5.</span> <span class="nav-text">启动版本库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#访问版本库"><span class="nav-number">6.</span> <span class="nav-text">访问版本库</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下载镜像"><span class="nav-number">1.</span> <span class="nav-text">下载镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一种方式启动"><span class="nav-number">1.1.</span> <span class="nav-text">第一种方式启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二种方式（挂载指定文件夹存储mysql文件）"><span class="nav-number">1.2.</span> <span class="nav-text">第二种方式（挂载指定文件夹存储mysql文件）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一种方式可以通过"><span class="nav-number">1.3.</span> <span class="nav-text">第一种方式可以通过</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
