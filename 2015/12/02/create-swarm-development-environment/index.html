@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="docker," />
+  <meta name="keywords" content="Docker swarm," />
 
 
 
@@ -84,34 +84,22 @@
 
 
 
-<meta name="description" content="本文主要介绍从Dockerfile创建一个centos7镜像
-安装docker$ sudo yum install docker
-添加当前用户到docker组中，可以省去每次输入sudo$sudo usermod -a -G docker $USER
-#下载相关文件">
+<meta name="description" content="本文来搭建Docker Swarm的开发环境。
+用Docker Hub提供的服务发现节点在所有节点上安装Swarm[glovee@localhost ~]$ docker pull  swarm
+修改每个节点Docker配置文件#centos 是/etc/sysconfig/docker#ubuntu是/etc/default/dockersudo vim /etc/sysconfig/docke">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从Dockfile创建一个镜像">
-<meta property="og:url" content="http://grug.tech/2015/10/27/create-docker-container-from-dockerfile/index.html">
+<meta property="og:title" content="Docker Swarm实战（2）-创建Swarm开发环境">
+<meta property="og:url" content="http://grug.tech/2015/12/02/create-swarm-development-environment/index.html">
 <meta property="og:site_name" content="Grug Code Life">
-<meta property="og:description" content="本文主要介绍从Dockerfile创建一个centos7镜像
-安装docker$ sudo yum install docker
-添加当前用户到docker组中，可以省去每次输入sudo$sudo usermod -a -G docker $USER
-#下载相关文件">
-<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build1.png">
-<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build2.png">
-<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build3.png">
-<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build4.png">
-<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build5.png">
-<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build_centos.png">
-<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build_centos1.png">
-<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build_centos2.png">
-<meta property="og:updated_time" content="2016-08-31T09:41:26.000Z">
+<meta property="og:description" content="本文来搭建Docker Swarm的开发环境。
+用Docker Hub提供的服务发现节点在所有节点上安装Swarm[glovee@localhost ~]$ docker pull  swarm
+修改每个节点Docker配置文件#centos 是/etc/sysconfig/docker#ubuntu是/etc/default/dockersudo vim /etc/sysconfig/docke">
+<meta property="og:updated_time" content="2016-09-23T06:22:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从Dockfile创建一个镜像">
-<meta name="twitter:description" content="本文主要介绍从Dockerfile创建一个centos7镜像
-安装docker$ sudo yum install docker
-添加当前用户到docker组中，可以省去每次输入sudo$sudo usermod -a -G docker $USER
-#下载相关文件">
-<meta name="twitter:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build1.png">
+<meta name="twitter:title" content="Docker Swarm实战（2）-创建Swarm开发环境">
+<meta name="twitter:description" content="本文来搭建Docker Swarm的开发环境。
+用Docker Hub提供的服务发现节点在所有节点上安装Swarm[glovee@localhost ~]$ docker pull  swarm
+修改每个节点Docker配置文件#centos 是/etc/sysconfig/docker#ubuntu是/etc/default/dockersudo vim /etc/sysconfig/docke">
 
 
 
@@ -132,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="http://grug.tech/2015/10/27/create-docker-container-from-dockerfile/"/>
+  <link rel="canonical" href="http://grug.tech/2015/12/02/create-swarm-development-environment/"/>
 
-  <title> 从Dockfile创建一个镜像 | Grug Code Life </title>
+  <title> Docker Swarm实战（2）-创建Swarm开发环境 | Grug Code Life </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -270,7 +258,7 @@
             
             
               
-                从Dockfile创建一个镜像
+                Docker Swarm实战（2）-创建Swarm开发环境
               
             
           </h1>
@@ -282,8 +270,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-27T11:52:00+08:00" content="2015-10-27">
-              2015-10-27
+            <time itemprop="dateCreated" datetime="2015-12-02T14:49:05+08:00" content="2015-12-02">
+              2015-12-02
             </time>
           </span>
 
@@ -312,8 +300,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/27/create-docker-container-from-dockerfile/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/27/create-docker-container-from-dockerfile/" itemprop="commentsCount"></span>
+                <a href="/2015/12/02/create-swarm-development-environment/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/02/create-swarm-development-environment/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -323,7 +311,7 @@
 
           
           
-             <span id="/2015/10/27/create-docker-container-from-dockerfile/" class="leancloud_visitors" data-flag-title="从Dockfile创建一个镜像">
+             <span id="/2015/12/02/create-swarm-development-environment/" class="leancloud_visitors" data-flag-title="Docker Swarm实战（2）-创建Swarm开发环境">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -345,26 +333,25 @@
       
 
       
-        <p>本文主要介绍从Dockerfile创建一个centos7镜像</p>
-<h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo yum install docker</div></pre></td></tr></table></figure>
-<p>添加当前用户到docker组中，可以省去每次输入sudo<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="variable">$sudo</span> usermod <span class="_">-a</span> -G docker <span class="variable">$USER</span></div></pre></td></tr></table></figure></p>
-<p>#下载相关文件<br><a id="more"></a></p>
-<p>访问<a href="https://github.com/CentOS/sig-cloud-instance-images/tree/281559d6864e84fe365ef4007d4db27c197b50fb" target="_blank" rel="external">git_bub_centos</a></p>
-<p>下载zip,解压缩<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="variable">$wget</span> https://codeload.github.com/CentOS/sig-cloud-instance-images/zip/281559d6864e84fe365ef4007d4db27c197b50fb</div></pre></td></tr></table></figure></p>
-<p>重新命名centos7</p>
-<h1 id="编辑Dockerfile"><a href="#编辑Dockerfile" class="headerlink" title="编辑Dockerfile"></a>编辑Dockerfile</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="variable">$vim</span> Dockerfile</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">FROM scratch</div><div class="line">MAINTAINER The CentOS Project &amp;lt;cloud-ops@centos.org&amp;gt;</div><div class="line">ADD c7-docker.tar.xz /</div><div class="line">LABEL Vendor=&quot;CentOS&quot;</div><div class="line">LABEL License=GPLv2</div><div class="line">VOLUME [&quot;/run&quot;, &quot;/tmp&quot;]</div><div class="line">ENV container=docker</div><div class="line">RUN yum install -y openssh-server sudo</div><div class="line">RUN sed -i &apos;s/UsePAM yes/UsePAM no/g&apos; /etc/ssh/sshd_config</div><div class="line">RUN useradd admin</div><div class="line">RUN echo &quot;admin:admin&quot; | chpasswd</div><div class="line">RUN echo &quot;admin ALL=(ALL) ALL&quot; &amp;gt;&amp;gt; /etc/sudoers</div><div class="line">RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key</div><div class="line">RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key</div><div class="line">RUN mkdir /var/run/sshd</div><div class="line">EXPOSE 22</div><div class="line">CMD [&quot;/usr/sbin/sshd&quot;, &quot;-D&quot;]</div></pre></td></tr></table></figure>
-<h1 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ docker build -t centos7<span class="built_in">test</span>  . (这里的“.”表示当前目录)</div></pre></td></tr></table></figure>
-<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build1.png" alt="docker_build1"><br><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build2.png" alt="docker_build1"><br><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build3.png" alt="docker_build1"><br><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build4.png" alt="docker_build1"></p>
-<h1 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ docker images</div></pre></td></tr></table></figure>
-<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build5.png" alt="docker_build1"></p>
-<h1 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="variable">$docker</span> run <span class="_">-d</span> -p 22 centos7<span class="built_in">test</span></div></pre></td></tr></table></figure>
-<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build_centos.png" alt="docker_build1"><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="variable">$docker</span> ps</div></pre></td></tr></table></figure></p>
-<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build_centos1.png" alt="docker_build1"></p>
-<p>其中的centos7test的容器中的22端口映射主机的32768端口</p>
-<h1 id="用ssh登录启动的容器"><a href="#用ssh登录启动的容器" class="headerlink" title="用ssh登录启动的容器"></a>用ssh登录启动的容器</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ ssh admin@localhost -p 32768</div></pre></td></tr></table></figure>
-<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/docker_build_centos2.png" alt="docker_build1"></p>
-<p>红色表示已经成功登录到容器</p>
+        <p>本文来搭建Docker Swarm的开发环境。</p>
+<h1 id="用Docker-Hub提供的服务发现节点"><a href="#用Docker-Hub提供的服务发现节点" class="headerlink" title="用Docker Hub提供的服务发现节点"></a>用Docker Hub提供的服务发现节点</h1><h2 id="在所有节点上安装Swarm"><a href="#在所有节点上安装Swarm" class="headerlink" title="在所有节点上安装Swarm"></a>在所有节点上安装Swarm</h2><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[glovee@localhost ~]$ docker pull  swarm</div></pre></td></tr></table></figure>
+<h2 id="修改每个节点Docker配置文件"><a href="#修改每个节点Docker配置文件" class="headerlink" title="修改每个节点Docker配置文件"></a>修改每个节点Docker配置文件</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#centos 是/etc/sysconfig/docker</div><div class="line">#ubuntu是/etc/default/docker</div><div class="line">sudo vim /etc/sysconfig/docker</div></pre></td></tr></table></figure>
+<p>添加<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">D0OCKER_OPTS=”-H 0.0.0.0:2375 –H unix:///var/run/docker.sock”</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#重新启动docker</span></div><div class="line">sudo service restart docker</div></pre></td></tr></table></figure>
+<h2 id="任一一个节点-创建一个集群"><a href="#任一一个节点-创建一个集群" class="headerlink" title="任一一个节点 创建一个集群"></a>任一一个节点 创建一个集群</h2><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#下面的命令在Dokcer hub上创建了全球唯一标识,要记录这个标识，以便子节点加入集群时使用</span></div><div class="line">[glovee@localhost ~]$ docker run --rm swarm create</div><div class="line">e9edd7dea9adcb862a85ade444d1fcad</div></pre></td></tr></table></figure>
+<h2 id="测试三台机器之间是否可以Ping通，只有在Ping通的情况下才可以搭建。"><a href="#测试三台机器之间是否可以Ping通，只有在Ping通的情况下才可以搭建。" class="headerlink" title="测试三台机器之间是否可以Ping通，只有在Ping通的情况下才可以搭建。"></a>测试三台机器之间是否可以Ping通，只有在Ping通的情况下才可以搭建。</h2><p><span style="color: #ff0000;">记住要关闭防火墙，iptables,或者firewall</span></p>
+<h2 id="在每个子节点中执行加入集群命令"><a href="#在每个子节点中执行加入集群命令" class="headerlink" title="在每个子节点中执行加入集群命令"></a>在每个子节点中执行加入集群命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#加入集群</span></div><div class="line">[glovee@localhost ~]$ docker run <span class="_">-d</span> swarm join --addr=192.168.101.16:2375 token://e9edd7dea9adcb862a85ade444d1fcad</div><div class="line">ed89d951528a105dce570dd6aec6bc06f87b6db12af471ca93e179bb0d272b98</div><div class="line"><span class="comment">#另一个节点</span></div><div class="line">[grug@localhost ~]$ docker run <span class="_">-d</span> swarm join --addr=192.168.101.14:2375 token://e9edd7dea9adcb862a85ade444d1fcad</div><div class="line">6dbfd5520607e3<span class="built_in">cd</span>161eb90a15fe3a272aada3b3ec3df3eaeb44ae70f67cecec</div></pre></td></tr></table></figure>
+<p>上面的–addr=xxx:2375是子节点ip地址</p>
+<h2 id="在管理节点上启动swarm-manage"><a href="#在管理节点上启动swarm-manage" class="headerlink" title="在管理节点上启动swarm manage"></a>在管理节点上启动swarm manage</h2><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#启动集成管理，这里在192.168.101.16这台机器</span></div><div class="line">[glovee@localhost ~]$ docker run <span class="_">-d</span> -p 2376:2375 swarm manage token://e9edd7dea9adcb862a85ade444d1fcad</div><div class="line">b00179ae26e75a3d9570a4d9a06ac06a24b03978f6bbf411b8a35b3cb7067337</div></pre></td></tr></table></figure>
+<h2 id="查看操作集群信息"><a href="#查看操作集群信息" class="headerlink" title="查看操作集群信息"></a>查看操作集群信息</h2><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[grug@localhost ~]$ docker -H 192.168.101.16:2376 info</div><div class="line">Containers: 102</div><div class="line">Images: 26</div><div class="line">Role: primary</div><div class="line">Strategy: spread</div><div class="line">Filters: health, port, dependency, affinity, constraint</div><div class="line">Nodes: 2</div><div class="line">localhost.localdomain: 192.168.101.14:2375</div><div class="line">└ Containers: 8</div><div class="line">└ Reserved CPUs: 0 / 2</div><div class="line">└ Reserved Memory: 0 B / 513.8 MiB</div><div class="line">└ Labels: executiondriver=native-0.2, kernelversion=4.2.5-300.fc23.x86_64, operatingsystem=Fedora 23 (Server Edition), storagedriver=devicemapper</div><div class="line">localhost.localdomain: 192.168.101.16:2375</div><div class="line">└ Containers: 94</div><div class="line">└ Reserved CPUs: 0 / 2</div><div class="line">└ Reserved Memory: 0 B / 513.8 MiB</div><div class="line">└ Labels: executiondriver=native-0.2, kernelversion=4.1.7-200.fc22.x86_64, operatingsystem=Fedora 22 (Twenty Two), storagedriver=devicemapper</div><div class="line">CPUs: 4</div><div class="line">Total Memory: 1.004 GiB</div><div class="line">Name: bc4dea2b3016</div></pre></td></tr></table></figure>
+<h2 id="其它操作命令"><a href="#其它操作命令" class="headerlink" title="其它操作命令"></a>其它操作命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker -H tcp://&lt;manager_ip:manager_port&gt; info</div><div class="line"></div><div class="line">docker -H tcp://&lt;manager_ip:manager_port&gt; run</div><div class="line"></div><div class="line">docker -H tcp://&lt;manager_ip:manager_port&gt; ps</div><div class="line"></div><div class="line">docker -H tcp://&lt;manager_ip:manager_port&gt; logs ...</div></pre></td></tr></table></figure>
+<h1 id="用文件存储来当发现节点"><a href="#用文件存储来当发现节点" class="headerlink" title="用文件存储来当发现节点"></a>用文件存储来当发现节点</h1><h2 id="输出集群信息到文件"><a href="#输出集群信息到文件" class="headerlink" title="输出集群信息到文件"></a>输出集群信息到文件</h2><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[glovee@localhost ~]$ <span class="built_in">echo</span> 192.168.101.16:2375 &gt;&gt; cluster</div><div class="line">[glovee@localhost ~]$ <span class="built_in">echo</span> 192.168.101.14:2375 &gt;&gt; cluster</div></pre></td></tr></table></figure>
+<h2 id="启动管理，这里在16机器上"><a href="#启动管理，这里在16机器上" class="headerlink" title="启动管理，这里在16机器上"></a>启动管理，这里在16机器上</h2><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[glovee@localhost ~]$ docker run <span class="_">-d</span> -p 2376:2375 -v $(<span class="built_in">pwd</span>)/cluster:/tmp/cluster swarm manage file:///tmp/cluster</div><div class="line">bc4dea2b3016f0a1882002b1db46ccfc3bdaf99661ad80572c4ca0a40a2be311</div></pre></td></tr></table></figure>
+<p>其它与上文的方式一样</p>
+<p>用文件存储可以防止出现</p>
+<p>time=”2015-12-02T05:46:40Z” level=error msg=”Post <a href="https://discovery.hub.docker.com/v1/clusters/e9edd7dea9adcb862a85ade444d1fcad?ttl=60" target="_blank" rel="external">https://discovery.hub.docker.com/v1/clusters/e9edd7dea9adcb862a85ade444d1fcad?ttl=60</a>: dial tcp: i/o timeout” 的问题</p>
+<p>缺点是一旦启动，不能添加新的节点。</p>
 
       
     </div>
@@ -387,7 +374,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/docker/" rel="tag">#docker</a>
+            <a href="/tags/Docker-swarm/" rel="tag">#Docker swarm</a>
           
         </div>
       
@@ -396,16 +383,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/27/create-svnserver-in-centos7/" rel="next" title="centos7搭建svn服务器">
-                <i class="fa fa-chevron-left"></i> centos7搭建svn服务器
+              <a href="/2015/11/23/create-docker-cluster-with-docker-machine/" rel="next" title="Docker Swarm实战（1）-以Docker Machine建立docker集群">
+                <i class="fa fa-chevron-left"></i> Docker Swarm实战（1）-以Docker Machine建立docker集群
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/23/create-docker-cluster-with-docker-machine/" rel="prev" title="Docker Swarm实战（1）-以Docker Machine建立docker集群">
-                Docker Swarm实战（1）-以Docker Machine建立docker集群 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/01/25/collections-sort/" rel="prev" title="Collections.sort()用法总结">
+                Collections.sort()用法总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -421,10 +408,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/10/27/create-docker-container-from-dockerfile/"
-     data-title="从Dockfile创建一个镜像"
+        <div class="ds-share flat" data-thread-key="2015/12/02/create-swarm-development-environment/"
+     data-title="Docker Swarm实战（2）-创建Swarm开发环境"
      data-content=""
-     data-url="http://grug.tech/2015/10/27/create-docker-container-from-dockerfile/">
+     data-url="http://grug.tech/2015/12/02/create-swarm-development-environment/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -451,8 +438,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/10/27/create-docker-container-from-dockerfile/"
-           data-title="从Dockfile创建一个镜像" data-url="http://grug.tech/2015/10/27/create-docker-container-from-dockerfile/">
+      <div class="ds-thread" data-thread-key="2015/12/02/create-swarm-development-environment/"
+           data-title="Docker Swarm实战（2）-创建Swarm开发环境" data-url="http://grug.tech/2015/12/02/create-swarm-development-environment/">
       </div>
     
   </div>
@@ -543,7 +530,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装docker"><span class="nav-number">1.</span> <span class="nav-text">安装docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编辑Dockerfile"><span class="nav-number">2.</span> <span class="nav-text">编辑Dockerfile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译"><span class="nav-number">3.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看镜像"><span class="nav-number">4.</span> <span class="nav-text">查看镜像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动镜像"><span class="nav-number">5.</span> <span class="nav-text">启动镜像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用ssh登录启动的容器"><span class="nav-number">6.</span> <span class="nav-text">用ssh登录启动的容器</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用Docker-Hub提供的服务发现节点"><span class="nav-number">1.</span> <span class="nav-text">用Docker Hub提供的服务发现节点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在所有节点上安装Swarm"><span class="nav-number">1.1.</span> <span class="nav-text">在所有节点上安装Swarm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改每个节点Docker配置文件"><span class="nav-number">1.2.</span> <span class="nav-text">修改每个节点Docker配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任一一个节点-创建一个集群"><span class="nav-number">1.3.</span> <span class="nav-text">任一一个节点 创建一个集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试三台机器之间是否可以Ping通，只有在Ping通的情况下才可以搭建。"><span class="nav-number">1.4.</span> <span class="nav-text">测试三台机器之间是否可以Ping通，只有在Ping通的情况下才可以搭建。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在每个子节点中执行加入集群命令"><span class="nav-number">1.5.</span> <span class="nav-text">在每个子节点中执行加入集群命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在管理节点上启动swarm-manage"><span class="nav-number">1.6.</span> <span class="nav-text">在管理节点上启动swarm manage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看操作集群信息"><span class="nav-number">1.7.</span> <span class="nav-text">查看操作集群信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它操作命令"><span class="nav-number">1.8.</span> <span class="nav-text">其它操作命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用文件存储来当发现节点"><span class="nav-number">2.</span> <span class="nav-text">用文件存储来当发现节点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#输出集群信息到文件"><span class="nav-number">2.1.</span> <span class="nav-text">输出集群信息到文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动管理，这里在16机器上"><span class="nav-number">2.2.</span> <span class="nav-text">启动管理，这里在16机器上</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
