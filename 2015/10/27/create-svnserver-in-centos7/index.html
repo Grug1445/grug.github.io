@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Happy Emily,Happy Life" />
+  <meta name="keywords" content="svn," />
 
 
 
@@ -84,23 +84,21 @@
 
 
 
-<meta name="description" content="安装(请先卸载sendmail)#yum install postfix  cycus-sasl* dovecot
-配置postfix# vim /etc/postfix/main.cf">
+<meta name="description" content="安装subversion# yum install subversion
+新建版本库文件目录# mkdir /var/svn/rep">
 <meta property="og:type" content="article">
-<meta property="og:title" content="centos7搭建邮件服务器">
-<meta property="og:url" content="http://grug.tech/2015/10/27/create-mailserver-in-centos7/index.html">
+<meta property="og:title" content="centos7搭建svn服务器">
+<meta property="og:url" content="http://grug.tech/2015/10/27/create-svnserver-in-centos7/index.html">
 <meta property="og:site_name" content="Grug Code Life">
-<meta property="og:description" content="安装(请先卸载sendmail)#yum install postfix  cycus-sasl* dovecot
-配置postfix# vim /etc/postfix/main.cf">
-<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/test.png">
-<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/smtp.png">
-<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/sample.png">
-<meta property="og:updated_time" content="2016-09-05T11:02:48.000Z">
+<meta property="og:description" content="安装subversion# yum install subversion
+新建版本库文件目录# mkdir /var/svn/rep">
+<meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/svntest.png">
+<meta property="og:updated_time" content="2016-09-23T05:46:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="centos7搭建邮件服务器">
-<meta name="twitter:description" content="安装(请先卸载sendmail)#yum install postfix  cycus-sasl* dovecot
-配置postfix# vim /etc/postfix/main.cf">
-<meta name="twitter:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/test.png">
+<meta name="twitter:title" content="centos7搭建svn服务器">
+<meta name="twitter:description" content="安装subversion# yum install subversion
+新建版本库文件目录# mkdir /var/svn/rep">
+<meta name="twitter:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/svntest.png">
 
 
 
@@ -121,9 +119,9 @@
 
 
 
-  <link rel="canonical" href="http://grug.tech/2015/10/27/create-mailserver-in-centos7/"/>
+  <link rel="canonical" href="http://grug.tech/2015/10/27/create-svnserver-in-centos7/"/>
 
-  <title> centos7搭建邮件服务器 | Grug Code Life </title>
+  <title> centos7搭建svn服务器 | Grug Code Life </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -259,7 +257,7 @@
             
             
               
-                centos7搭建邮件服务器
+                centos7搭建svn服务器
               
             
           </h1>
@@ -271,7 +269,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-27T11:47:43+08:00" content="2015-10-27">
+            <time itemprop="dateCreated" datetime="2015-10-27T11:48:43+08:00" content="2015-10-27">
               2015-10-27
             </time>
           </span>
@@ -292,6 +290,18 @@
 
                 
                 
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/linux/svn/" itemprop="url" rel="index">
+                    <span itemprop="name">svn</span>
+                  </a>
+                </span>
+
+                
+                
 
               
             </span>
@@ -301,8 +311,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/27/create-mailserver-in-centos7/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/27/create-mailserver-in-centos7/" itemprop="commentsCount"></span>
+                <a href="/2015/10/27/create-svnserver-in-centos7/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/27/create-svnserver-in-centos7/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -312,7 +322,7 @@
 
           
           
-             <span id="/2015/10/27/create-mailserver-in-centos7/" class="leancloud_visitors" data-flag-title="centos7搭建邮件服务器">
+             <span id="/2015/10/27/create-svnserver-in-centos7/" class="leancloud_visitors" data-flag-title="centos7搭建svn服务器">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -334,28 +344,18 @@
       
 
       
-        <h1 id="安装-请先卸载sendmail"><a href="#安装-请先卸载sendmail" class="headerlink" title="安装(请先卸载sendmail)"></a>安装(请先卸载sendmail)</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#yum install postfix  cycus-sasl* dovecot</span></div></pre></td></tr></table></figure>
-<h1 id="配置postfix"><a href="#配置postfix" class="headerlink" title="配置postfix"></a>配置postfix</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># vim /etc/postfix/main.cf</span></div></pre></td></tr></table></figure>
+        <h1 id="安装subversion"><a href="#安装subversion" class="headerlink" title="安装subversion"></a>安装subversion</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># yum install subversion</span></div></pre></td></tr></table></figure>
+<h1 id="新建版本库文件目录"><a href="#新建版本库文件目录" class="headerlink" title="新建版本库文件目录"></a>新建版本库文件目录</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># mkdir /var/svn/rep</span></div></pre></td></tr></table></figure>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">myhostname=mail.example.com</div><div class="line">mydomain=example.com</div><div class="line">myorigin = $mydomain</div><div class="line">inet_interfaces = all   ＃可以接收所有域名的邮件</div><div class="line">mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain,mail.$mydomain, www.$mydomain, ftp.$mydomain</div><div class="line">local_recipient_maps =</div><div class="line">mynetworks =192.168.1.0/24,127.0.0.0/8   ＃设置内网ip</div><div class="line">relay_domains = $mydestination</div><div class="line">home_mailbox = Maildir/</div><div class="line">#关于认证</div><div class="line">smtpd_sasl_auth_enable = yes</div><div class="line">smtpd_sasl_security_options = noanonymous</div><div class="line">broken_sasl_auth_clients = yes</div><div class="line">smtpd_recipient_restrictions = permit_sasl_authenticated,reject_unauth_destination,permit_mynetworks</div><div class="line">smtpd_client_restrictions = permit_sasl_authenticated</div></pre></td></tr></table></figure>
-<h1 id="配置dovecot"><a href="#配置dovecot" class="headerlink" title="配置dovecot"></a>配置dovecot</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># vim /etc/dovecot/dovecot.conf</span></div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">protocols = imap pop3 lmtp</div><div class="line">listen = *</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#vim /etc/dovecot/conf.d/10-auth.conf</span></div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">disable_plaintext_auth = no</div><div class="line">auth_mechanisms = plain</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#vim  /etc/dovecot/conf.d/10-mail.conf</span></div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mail_location = maildir:~/Maildir</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#vim /etc/dovecot/conf.d/10-ssl.conf</span></div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ssl = no</div></pre></td></tr></table></figure>
-<h1 id="配置sasl2"><a href="#配置sasl2" class="headerlink" title="配置sasl2"></a>配置sasl2</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#vim /etc/sysconfig/saslauthd</span></div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MECH=shadow  #指定以本地系统用户名认证</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#vim /usr/lib64/sasl2/smtpd.conf  #注意这里是64位系统，32位可能是/usr/lib/...</span></div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pwcheck_method: saslauthd</div><div class="line">mech_list: PLAIN LOGIN</div><div class="line">log_level:3</div></pre></td></tr></table></figure>
-<h1 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># service postfix start</span></div><div class="line"><span class="comment"># service dovecot start</span></div><div class="line"><span class="comment">#service saslauthd start</span></div></pre></td></tr></table></figure>
-<h1 id="设置用户"><a href="#设置用户" class="headerlink" title="设置用户"></a>设置用户</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">＃useradd –s /sbin/nologin –m <span class="built_in">test</span></div><div class="line">＃passwd <span class="built_in">test</span> //密码 testtest</div></pre></td></tr></table></figure>
-<p>测试用户<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">＃/usr/sbin/testsaslauthd -u <span class="built_in">test</span> -p testtest</div><div class="line">0: OK <span class="string">"Success."</span></div></pre></td></tr></table></figure></p>
-<h1 id="在客户端配置"><a href="#在客户端配置" class="headerlink" title="在客户端配置"></a>在客户端配置</h1><h2 id="pop"><a href="#pop" class="headerlink" title="pop"></a>pop</h2><p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/test.png" alt="test"></p>
-<h2 id="smtp"><a href="#smtp" class="headerlink" title="smtp"></a>smtp</h2><p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/smtp.png" alt="smtp"></p>
-<h2 id="可以接收和发送"><a href="#可以接收和发送" class="headerlink" title="可以接收和发送"></a>可以接收和发送</h2><p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/sample.png" alt="sample"></p>
+<h1 id="新建版本库配置文件"><a href="#新建版本库配置文件" class="headerlink" title="新建版本库配置文件"></a>新建版本库配置文件</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># svnadmin create /var/svn/repo/</span></div></pre></td></tr></table></figure>
+<h1 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># vim /var/svn/repo/conf/authz</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[aliases]</div><div class="line"># joe = /C=XZ/ST=Dessert/L=Snake City/O=Snake Oil, Ltd./OU=Research Institute/CN=Joe Average</div><div class="line"></div><div class="line">[groups]</div><div class="line"># harry_and_sally = harry,sally</div><div class="line"># harry_sally_and_joe = harry,sally,&amp;amp;joe</div><div class="line">admin=admin   #前面是组名，后面是组的成员</div><div class="line"># [/foo/bar]</div><div class="line"># harry = rw</div><div class="line"># &amp;amp;joe = r</div><div class="line"># * =</div><div class="line"></div><div class="line"># [repository:/baz/fuz]</div><div class="line"># @harry_and_sally = rw</div><div class="line"># * = r</div><div class="line"></div><div class="line">#这里一般写&quot;/&quot;是repo的根目录。</div><div class="line">[/]</div><div class="line">@admin=rw #组有读写的权限</div><div class="line">*=</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># vim /var/svn/repo/conf/passwd</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[users]</div><div class="line"># harry = harryssecret</div><div class="line"># sally = sallyssecret</div><div class="line">admin=admin #用户名=密码</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#vim /var/svn/repo/conf/svnserve.conf</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[general]</div><div class="line">### The anon-access and auth-access options control access to the</div><div class="line">### repository for unauthenticated (a.k.a. anonymous) users and</div><div class="line">### authenticated users, respectively.</div><div class="line">### Valid values are &quot;write&quot;, &quot;read&quot;, and &quot;none&quot;.</div><div class="line">### Setting the value to &quot;none&quot; prohibits both reading and writing;</div><div class="line">### &quot;read&quot; allows read-only access, and &quot;write&quot; allows complete</div><div class="line">### read/write access to the repository.</div><div class="line">### The sample settings below are the defaults and specify that anonymous</div><div class="line">### users have read-only access to the repository, while authenticated</div><div class="line">### users have read and write access to the repository.</div><div class="line">anon-access = none #匿名用户不能查看</div><div class="line">auth-access = write#授权用户可以读写</div><div class="line">### The password-db option controls the location of the password</div><div class="line">### database file. Unless you specify a path starting with a /,</div><div class="line">### the file&apos;s location is relative to the directory containing</div><div class="line">### this configuration file.</div><div class="line">### If SASL is enabled (see below), this file will NOT be used.</div><div class="line">### Uncomment the line below to use the default password file.</div><div class="line">password-db = passwd#用户认证文件</div><div class="line">### The authz-db option controls the location of the authorization</div><div class="line">### rules for path-based access control. Unless you specify a path</div><div class="line">### starting with a /, the file&apos;s location is relative to the the</div><div class="line">### directory containing this file. If you don&apos;t specify an</div><div class="line">### authz-db, no path-based access control is done.</div><div class="line">### Uncomment the line below to use the default authorization file.</div><div class="line">authz-db = authz#授权文件</div><div class="line">### This option specifies the authentication realm of the repository.</div><div class="line">### If two repositories have the same authentication realm, they should</div><div class="line">### have the same password database, and vice versa. The default realm</div><div class="line">### is repository&apos;s uuid.</div><div class="line">realm = /var/svn/repo#版本库</div><div class="line">### The force-username-case option causes svnserve to case-normalize</div><div class="line">### usernames before comparing them against the authorization rules in the</div><div class="line">### authz-db file configured above. Valid values are &quot;upper&quot; (to upper-</div><div class="line">### case the usernames), &quot;lower&quot; (to lowercase the usernames), and</div><div class="line">### &quot;none&quot; (to compare usernames as-is without case conversion, which</div><div class="line">### is the default behavior).</div><div class="line"># force-username-case = none</div></pre></td></tr></table></figure>
+<h1 id="启动版本库"><a href="#启动版本库" class="headerlink" title="启动版本库"></a>启动版本库</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># svnserve -d -r /var/svn/</span></div></pre></td></tr></table></figure>
+<h1 id="访问版本库"><a href="#访问版本库" class="headerlink" title="访问版本库"></a>访问版本库</h1><p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/svntest.png" alt="svntest"></p>
 
       
     </div>
@@ -376,21 +376,27 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/svn/" rel="tag">#svn</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/27/create-ftpserver-in-centos/" rel="next" title="centos搭建ftp服务">
-                <i class="fa fa-chevron-left"></i> centos搭建ftp服务
+              <a href="/2015/10/27/create-mailserver-in-centos7/" rel="next" title="centos7搭建邮件服务器">
+                <i class="fa fa-chevron-left"></i> centos7搭建邮件服务器
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/27/create-svnserver-in-centos7/" rel="prev" title="centos7搭建svn服务器">
-                centos7搭建svn服务器 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/10/27/create-docker-container-from-dockerfile/" rel="prev" title="从Dockfile创建一个镜像">
+                从Dockfile创建一个镜像 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -406,10 +412,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/10/27/create-mailserver-in-centos7/"
-     data-title="centos7搭建邮件服务器"
+        <div class="ds-share flat" data-thread-key="2015/10/27/create-svnserver-in-centos7/"
+     data-title="centos7搭建svn服务器"
      data-content=""
-     data-url="http://grug.tech/2015/10/27/create-mailserver-in-centos7/">
+     data-url="http://grug.tech/2015/10/27/create-svnserver-in-centos7/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -436,8 +442,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/10/27/create-mailserver-in-centos7/"
-           data-title="centos7搭建邮件服务器" data-url="http://grug.tech/2015/10/27/create-mailserver-in-centos7/">
+      <div class="ds-thread" data-thread-key="2015/10/27/create-svnserver-in-centos7/"
+           data-title="centos7搭建svn服务器" data-url="http://grug.tech/2015/10/27/create-svnserver-in-centos7/">
       </div>
     
   </div>
@@ -528,7 +534,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装-请先卸载sendmail"><span class="nav-number">1.</span> <span class="nav-text">安装(请先卸载sendmail)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置postfix"><span class="nav-number">2.</span> <span class="nav-text">配置postfix</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置dovecot"><span class="nav-number">3.</span> <span class="nav-text">配置dovecot</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置sasl2"><span class="nav-number">4.</span> <span class="nav-text">配置sasl2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动服务"><span class="nav-number">5.</span> <span class="nav-text">启动服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置用户"><span class="nav-number">6.</span> <span class="nav-text">设置用户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在客户端配置"><span class="nav-number">7.</span> <span class="nav-text">在客户端配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pop"><span class="nav-number">7.1.</span> <span class="nav-text">pop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#smtp"><span class="nav-number">7.2.</span> <span class="nav-text">smtp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可以接收和发送"><span class="nav-number">7.3.</span> <span class="nav-text">可以接收和发送</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装subversion"><span class="nav-number">1.</span> <span class="nav-text">安装subversion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新建版本库文件目录"><span class="nav-number">2.</span> <span class="nav-text">新建版本库文件目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新建版本库配置文件"><span class="nav-number">3.</span> <span class="nav-text">新建版本库配置文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改配置文件"><span class="nav-number">4.</span> <span class="nav-text">修改配置文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动版本库"><span class="nav-number">5.</span> <span class="nav-text">启动版本库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#访问版本库"><span class="nav-number">6.</span> <span class="nav-text">访问版本库</span></a></li></ol></div>
             
           </div>
         </section>
