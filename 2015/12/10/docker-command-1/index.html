@@ -101,7 +101,7 @@
 
 容器生命周期管理 — docker [run|start|stop|restart|kill|r">
 <meta property="og:image" content="http://7xo8j7.com1.z0.glb.clouddn.com/change-command.jpg">
-<meta property="og:updated_time" content="2016-09-23T08:40:24.000Z">
+<meta property="og:updated_time" content="2016-09-23T08:55:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker常用命令（1）">
 <meta name="twitter:description" content="本文转自 http://seanlook.com/2014/11/05/docker-command-best-use-1
@@ -354,9 +354,10 @@
 <li>容器rootfs命令 — <code>docker [commit|cp|diff]</code></li>
 <li>镜像仓库 — <code>docker [login|pull|push|search]</code></li>
 <li>本地镜像管理 — <code>docker [images|rmi|tag|build|history|save|import]</code></li>
-<li>其他命令 — <code>docker [info|version]</code><br>看一个变迁图</li>
+<li>其他命令 — <code>docker [info|version]</code></li>
 </ul>
-<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/change-command.jpg" alt=""></p>
+<a id="more"></a>
+<p>看一个变迁图<br><img src="http://7xo8j7.com1.z0.glb.clouddn.com/change-command.jpg" alt=""></p>
 <h1 id="列出机器上的镜像（images）"><a href="#列出机器上的镜像（images）" class="headerlink" title="列出机器上的镜像（images）"></a>列出机器上的镜像（images）</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># docker images </span></div><div class="line">REPOSITORY            TAG             IMAGE ID        CREATED         VIRTUAL SIZE</div><div class="line">ubuntu                14.10           2185fd50e2ca    13days ago     236.9 MB</div><div class="line">…</div></pre></td></tr></table></figure>
 <p>其中我们可以根据REPOSITORY来判断这个镜像是来自哪个服务器，如果没有 / 则表示官方镜像，类似于<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">username/repos_name</div></pre></td></tr></table></figure></p>
 <p>表示Github的个人公共库，类似于<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">regsistory.example.com:5000/repos_</div></pre></td></tr></table></figure></p>
@@ -394,7 +395,7 @@
 <h1 id="将一个container固化为一个新的image（commit）"><a href="#将一个container固化为一个新的image（commit）" class="headerlink" title="将一个container固化为一个新的image（commit）"></a>将一个container固化为一个新的image（commit）</h1><p>当我们在制作自己的镜像的时候，会在container中安装一些工具、修改配置，如果不做commit保存起来，那么container停止以后再启动，这些更改就消失了。<br><code>docker commit &lt;container&gt; [repo:tag]</code><br>后面的repo:tag可选<br>只能提交正在运行的container，即通过<code>docker ps</code>可以看见的容器，</p>
 <p>查看刚运行过的容器<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># docker ps -l</span></div><div class="line">CONTAINER ID   IMAGE     COMMAND      CREATED       STATUS        PORTS   NAMES</div><div class="line">c9fdf26326c9   nginx:1   nginx -g..   3 hours ago   Exited (0)..     nginx_test</div></pre></td></tr></table></figure></p>
 <p>启动一个已存在的容器（run是从image新建容器后再启动），以下也可以使用docker start nginx_test代替<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[root@hostname docker]<span class="comment"># docker start c9fdf26326c9c9fdf26326c9</span></div><div class="line">docker run -i -t --sig-proxy=<span class="literal">false</span> 2ffe545748baf /bin/bash</div><div class="line">nginx服务没有启动</div><div class="line"><span class="comment"># docker commit -m "some tools installed" fcbd0a5348ca seanlook/ubuntu:14.10_tutorial</span></div><div class="line">fe022762070b09866eaab47bc943ccb796e53f3f416abf3f2327481b446a9503</div></pre></td></tr></table></figure></p>
-<p>-a “seanlook7@gmail.com”<br>请注意，当你反复去commit一个容器的时候，每次都会得到一个新的<code>IMAGE ID</code>，假如后面的<code>repository:tag</code>没有变，通过<code>docker images</code>可以看到，之前提交的那份镜像的<code>repository:tag</code>就会变成<code>&lt;none&gt;:&lt;none&gt;</code>，所以尽量避免反复提交。<br>另外，观察以下几点:</p>
+<p>请注意，当你反复去commit一个容器的时候，每次都会得到一个新的<code>IMAGE ID</code>，假如后面的<code>repository:tag</code>没有变，通过<code>docker images</code>可以看到，之前提交的那份镜像的<code>repository:tag</code>就会变成<code>&lt;none&gt;:&lt;none&gt;</code>，所以尽量避免反复提交。<br>另外，观察以下几点:</p>
 <ul>
 <li><p>commit container只会pause住容器，这是为了保证容器文件系统的一致性，但不会stop。如果你要对这个容器继续做其他修改：</p>
 <ul>
