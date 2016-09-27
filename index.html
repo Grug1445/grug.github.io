@@ -254,6 +254,803 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/05/java-jackson-convert-json-with-no-class-fileds-match/" itemprop="url">
+                  java jackson 转义json字符串，类字段不匹配异常解决方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-05T18:54:10+08:00" content="2016-08-05">
+              2016-08-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/05/java-jackson-convert-json-with-no-class-fileds-match/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/05/java-jackson-convert-json-with-no-class-fileds-match/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/05/java-jackson-convert-json-with-no-class-fileds-match/" class="leancloud_visitors" data-flag-title="java jackson 转义json字符串，类字段不匹配异常解决方法">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight java"><table><tr><td class="code"><pre><div class="line">ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</div><div class="line">mapper.getDeserializationConfig().set(</div><div class="line">DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, <span class="keyword">false</span>);</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/26/java-ergodic-list-query-modify-delete-element/" itemprop="url">
+                  java  遍历List查询修改，删除元素
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-26T17:11:29+08:00" content="2016-07-26">
+              2016-07-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/26/java-ergodic-list-query-modify-delete-element/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/26/java-ergodic-list-query-modify-delete-element/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/26/java-ergodic-list-query-modify-delete-element/" class="leancloud_visitors" data-flag-title="java  遍历List查询修改，删除元素">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="背景：遍历List-找出满足条件元素，并修改。"><a href="#背景：遍历List-找出满足条件元素，并修改。" class="headerlink" title="背景：遍历List,找出满足条件元素，并修改。"></a>背景：遍历List,找出满足条件元素，并修改。</h2><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line">        List&lt;Integer&gt; integers = Lists.newArrayList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>);</div><div class="line">        <span class="comment">//要求把元素=6的值修改为9</span></div><div class="line">        <span class="keyword">for</span> (Integer integer : integers) &#123;</div><div class="line">            <span class="keyword">if</span> (integer == <span class="number">6</span>)</div><div class="line">                integer = <span class="number">9</span>;<span class="comment">//无效,因为只修改了integer变量值</span></div><div class="line">        &#125;</div><div class="line">        integers.stream().forEach(System.out::print);</div><div class="line">        System.out.println();</div><div class="line">        <span class="keyword">for</span> (Integer integer : integers) &#123;</div><div class="line">            <span class="keyword">if</span> (integer == <span class="number">6</span>)</div><div class="line">                integers.set(integers.indexOf(integer), <span class="number">9</span>);<span class="comment">//有效</span></div><div class="line">        &#125;</div><div class="line">        integers.stream().forEach(System.out::print);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/26/java-ergodic-list-query-modify-delete-element/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/21/java-traversing-multi-tree/" itemprop="url">
+                  java实现递归遍历多叉树
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-21T18:27:29+08:00" content="2016-07-21">
+              2016-07-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/21/java-traversing-multi-tree/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/21/java-traversing-multi-tree/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/21/java-traversing-multi-tree/" class="leancloud_visitors" data-flag-title="java实现递归遍历多叉树">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//一个简单的多叉树</span></div><div class="line">TreeNode &#123;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> parentId;</div><div class="line">    <span class="keyword">private</span> List&lt;TreeNode&gt; childList;</div><div class="line">&#125;</div><div class="line"><span class="comment">//递归遍历</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convert</span><span class="params">(List&lt;TreeNode&gt; treeNodes)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (treeNodes.isEmpty()) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RunTimeException();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (TreeNode treeNode : treeNodes) &#123;</div><div class="line">        System.out.print(<span class="string">"node id is"</span>+treeNode.getId());</div><div class="line">        <span class="keyword">if</span> (treeNode.getChildList().size() &gt; <span class="number">0</span>) &#123;</div><div class="line">            convert(treeNode.getChildList())</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/29/fedora-install-zsh-shell/" itemprop="url">
+                  fedora下安装配置zsh shell
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-29T19:03:23+08:00" content="2016-04-29">
+              2016-04-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/29/fedora-install-zsh-shell/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/29/fedora-install-zsh-shell/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/29/fedora-install-zsh-shell/" class="leancloud_visitors" data-flag-title="fedora下安装配置zsh shell">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="安装zsh"><a href="#安装zsh" class="headerlink" title="安装zsh"></a>安装zsh</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo dnf install zsh.x86_64</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[grug@localhost ~]$ cat /etc/shells </div><div class="line">/bin/sh</div><div class="line">/bin/bash</div><div class="line">/sbin/nologin</div><div class="line">/usr/bin/sh</div><div class="line">/usr/bin/bash</div><div class="line">/usr/sbin/nologin</div><div class="line">/usr/bin/zsh</div><div class="line">/bin/zsh <span class="comment">#这里已经安装成功zsh</span></div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/29/fedora-install-zsh-shell/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/16/java-concurrent-programming-foundation/" itemprop="url">
+                  java并发编程基础
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-16T14:09:03+08:00" content="2016-03-16">
+              2016-03-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/16/java-concurrent-programming-foundation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/java-concurrent-programming-foundation/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/16/java-concurrent-programming-foundation/" class="leancloud_visitors" data-flag-title="java并发编程基础">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>本文是《java并发编程的艺术》 第4章 Java并发编程基础 学习笔记</p>
+<h1 id="1线程简介"><a href="#1线程简介" class="headerlink" title="1线程简介"></a>1线程简介</h1><ul>
+<li>现代操作系统调度的最小单元是线程，也叫轻量级里程，在一个进程里可以创建多个线程，这些线程都拥有各自的计数器、堆栈和局部变量等属性，并且能够访问共享的内存变量。</li>
+<li>设置线程的优先级时，针对频繁阻塞的线程需要设置较高的优先级，面偏重计算的线程则设置较低的优先级，确保处理器不会被独占。在不同的jvm及操作系统上，线程规划会存在差异，有些操作系统甚至会忽略对线程优先级的设定。</li>
+<li>线程优先级不能作为程序正确性的依赖。</li>
+<li>线程六种状态：<span style="color: #ff0000;">NEW(初始),RUNNABLE（就绪和运行统称运行）,BLOCKED(阻塞)，WAITING(等待)，TIME_WAITING(超时等待)，TERMINATED(终止)。</span></li>
+<li>线程创建之后，调用start()方法开始运行。当线程执行wait()方法之后，线程进入等待状态。进入等待状态的线程需要依靠其他线程的通知才能返回到运行状态，而超时等待状态相当于在等待状态的基础上增加了超时限制，也就是超时时间到达时将会返回到运行状态。当线程调用同步方法，在没有获取到锁的情况下，线程将会进入到阻塞状态。线程在执行Runnable()的run()方法之后将会进入到终止状态。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/16/java-concurrent-programming-foundation/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/10/java-memory-model-study/" itemprop="url">
+                  java内存模型学习整理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-10T15:28:31+08:00" content="2016-03-10">
+              2016-03-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/10/java-memory-model-study/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/10/java-memory-model-study/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/10/java-memory-model-study/" class="leancloud_visitors" data-flag-title="java内存模型学习整理">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>本文是《java并发编程的艺术》 第3章java内存模型 学习整理笔记</p>
+<p>文章见于 <a href="http://ifeve.com/java-memory-model-0/">并发编程网-深入理解java内存模型系列文章</a></p>
+<h1 id="1-基础"><a href="#1-基础" class="headerlink" title="1 基础"></a>1 基础</h1><ul>
+<li>java并发采用的是共享内存模型。</li>
+<li>Java中，所有实例域，静态域和数组元素都存储在堆内存中，堆内存在线程之间共享。</li>
+<li>线程之间的共享变量存储在主内存中，每个线程都有一个私有的本地内存，本地内存中存储了该线程以读/写共享变量的副本。</li>
+<li>在执行程序时，为了提高性能，编译器和处理器常常会对指令做重排序。</li>
+<li>JMM(java memory model)属于语言级的内存模型，通过禁止特定类型的编译器重排序和处理器重排序，在不同的编译器和不同的处理器平台上，为程序员提供一致的内存可见性保证。</li>
+<li>处理器使用写缓冲区临时保存向内存写入的数据，通过批处理的方式刷新写缓冲区，且仅对它所在的处理器可见。</li>
+<li><span style="color: #ff0000;">happens-before 规则1 程序顺序规则：一个线程中的每个操作，happens-before于该线程中的任意后续操作。 2 监视器锁规则：对一个锁的解锁，happen-before于随后对这个锁的加锁。 3 volatile变量规则：对一个volatile域的写，happens-before于任意后续对这个volatile域的读。4 传递性规则：如果A heppens-before B,且B happens-before C,则 A heppens-beofore C。</span></li>
+<li><p><strong>两个操作之间具有happens-before关系，并不意味着前一个操作必须要在后一个操作之前执行。</strong></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/10/java-memory-model-study/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/08/a-thread-safe-counter/" itemprop="url">
                   一个线程安全的计数器
                 </a>
@@ -651,8 +1448,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/12/10/docker-command-2/" itemprop="url">
-                  docker常用命令（2）
+                <a class="post-title-link" href="/2016/01/19/fedora-install-config-mysql/" itemprop="url">
+                  fedora安装配置mysql
                 </a>
               
             
@@ -665,8 +1462,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-10T11:06:35+08:00" content="2015-12-10">
-              2015-12-10
+            <time itemprop="dateCreated" datetime="2016-01-19T14:19:38+08:00" content="2016-01-19">
+              2016-01-19
             </time>
           </span>
 
@@ -679,696 +1476,7 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index">
-                    <span itemprop="name">docker</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/10/docker-command-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/10/docker-command-2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/12/10/docker-command-2/" class="leancloud_visitors" data-flag-title="docker常用命令（2）">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>本文转自 <a href="http://seanlook.com/2014/11/05/docker-command-best-use-2">http://seanlook.com/2014/11/05/docker-command-best-use-2</a></p>
-<p>以下是原文</p>
-<h1 id="开启-停止-重启container（start-stop-restart）"><a href="#开启-停止-重启container（start-stop-restart）" class="headerlink" title="开启/停止/重启container（start/stop/restart）"></a>开启/停止/重启container（start/stop/restart）</h1><p>容器可以通过run新建一个来运行，也可以重新start已经停止的container，但start不能够再指定容器启动时运行的指令，因为docker只能有一个前台进程。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/10/docker-command-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/10/docker-command-1/" itemprop="url">
-                  docker常用命令（1）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-10T10:46:42+08:00" content="2015-12-10">
-              2015-12-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index">
-                    <span itemprop="name">docker</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/10/docker-command-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/10/docker-command-1/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/12/10/docker-command-1/" class="leancloud_visitors" data-flag-title="docker常用命令（1）">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>本文转自 <a href="http://seanlook.com/2014/11/05/docker-command-best-use-1">http://seanlook.com/2014/11/05/docker-command-best-use-1</a></p>
-<p>以下是原文</p>
-<p>本文记录docker命令在大部分情境下的使用，如果想了解每一个选项的细节，请参考官方文档，这里只作为自己以后的备忘记录下来。</p>
-<p>根据自己的理解，总的来说分为以下几种：</p>
-<ul>
-<li>容器生命周期管理 — <code>docker [run|start|stop|restart|kill|rm|pause|unpause]</code></li>
-<li>容器操作运维 — <code>docker [ps|inspect|top|attach|events|logs|wait|export|port]</code></li>
-<li>容器rootfs命令 — <code>docker [commit|cp|diff]</code></li>
-<li>镜像仓库 — <code>docker [login|pull|push|search]</code></li>
-<li>本地镜像管理 — <code>docker [images|rmi|tag|build|history|save|import]</code></li>
-<li>其他命令 — <code>docker [info|version]</code></li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/10/docker-command-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/02/create-swarm-development-environment/" itemprop="url">
-                  Docker Swarm实战（2）-创建Swarm开发环境
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-02T14:49:05+08:00" content="2015-12-02">
-              2015-12-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index">
-                    <span itemprop="name">docker</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/02/create-swarm-development-environment/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/02/create-swarm-development-environment/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/12/02/create-swarm-development-environment/" class="leancloud_visitors" data-flag-title="Docker Swarm实战（2）-创建Swarm开发环境">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>本文来搭建Docker Swarm的开发环境。</p>
-<h1 id="用Docker-Hub提供的服务发现节点"><a href="#用Docker-Hub提供的服务发现节点" class="headerlink" title="用Docker Hub提供的服务发现节点"></a>用Docker Hub提供的服务发现节点</h1><h2 id="在所有节点上安装Swarm"><a href="#在所有节点上安装Swarm" class="headerlink" title="在所有节点上安装Swarm"></a>在所有节点上安装Swarm</h2><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[glovee@localhost ~]$ docker pull  swarm</div></pre></td></tr></table></figure>
-<h2 id="修改每个节点Docker配置文件"><a href="#修改每个节点Docker配置文件" class="headerlink" title="修改每个节点Docker配置文件"></a>修改每个节点Docker配置文件</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#centos 是/etc/sysconfig/docker</div><div class="line">#ubuntu是/etc/default/docker</div><div class="line">sudo vim /etc/sysconfig/docker</div></pre></td></tr></table></figure>
-<p>添加<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">D0OCKER_OPTS=”-H 0.0.0.0:2375 –H unix:///var/run/docker.sock”</div></pre></td></tr></table></figure></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/02/create-swarm-development-environment/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/23/create-docker-cluster-with-docker-machine/" itemprop="url">
-                  Docker Swarm实战（1）-以Docker Machine建立docker集群
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-23T19:57:27+08:00" content="2015-11-23">
-              2015-11-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index">
-                    <span itemprop="name">docker</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/23/create-docker-cluster-with-docker-machine/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/23/create-docker-cluster-with-docker-machine/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/11/23/create-docker-cluster-with-docker-machine/" class="leancloud_visitors" data-flag-title="Docker Swarm实战（1）-以Docker Machine建立docker集群">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Docker Swarm是docker官方的集群工具。下面根据官方文档来进行实战。</p>
-<p>本文是以Docker Machine方式创建Docker集群</p>
-<h1 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h1><p>已经本地建立好一个名为local的虚拟机。</p>
-<h1 id="启动虚拟机并切换到local-session"><a href="#启动虚拟机并切换到local-session" class="headerlink" title="启动虚拟机并切换到local session."></a>启动虚拟机并切换到local session.</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">eval</span><span class="string">"<span class="variable">$(docker-machine env local)</span>"</span></div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/23/create-docker-cluster-with-docker-machine/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/12/docker-app-stack/" itemprop="url">
-                  Docker单机应用栈
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-12T15:28:55+08:00" content="2015-11-12">
-              2015-11-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index">
-                    <span itemprop="name">docker</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/12/docker-app-stack/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/12/docker-app-stack/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/11/12/docker-app-stack/" class="leancloud_visitors" data-flag-title="Docker单机应用栈">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>本文以《Docker 容器与容器云》中2.3章节为内容进行练习。</p>
-<p>结构图</p>
-<p><img src="http://7xo8j7.com1.z0.glb.clouddn.com/IMG_4846.jpg" alt=""></p>
-<p>这个应用栈包含一个代理节点，两个web节点，一个主数据库及两个从数据库。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/12/docker-app-stack/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/09/docker-install-mysql/" itemprop="url">
-                  docker 安装mysql
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-09T14:19:11+08:00" content="2015-11-09">
-              2015-11-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index">
-                    <span itemprop="name">docker</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/docker/mysql/" itemprop="url" rel="index">
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
                     <span itemprop="name">mysql</span>
                   </a>
                 </span>
@@ -1384,8 +1492,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/11/09/docker-install-mysql/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/09/docker-install-mysql/" itemprop="commentsCount"></span>
+                <a href="/2016/01/19/fedora-install-config-mysql/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/19/fedora-install-config-mysql/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1395,7 +1503,7 @@
 
           
           
-             <span id="/2015/11/09/docker-install-mysql/" class="leancloud_visitors" data-flag-title="docker 安装mysql">
+             <span id="/2016/01/19/fedora-install-config-mysql/" class="leancloud_visitors" data-flag-title="fedora安装配置mysql">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1418,145 +1526,9 @@
 
       
         
-          <h1 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker pull index.alauda.cn/library/mysql</div></pre></td></tr></table></figure>
-<h2 id="第一种方式启动"><a href="#第一种方式启动" class="headerlink" title="第一种方式启动"></a>第一种方式启动</h2><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker run --name mysql <span class="_">-e</span> MYSQL_ROOT_PASSWORD=mysql <span class="_">-d</span> -p 3306:3306 index.alauda.cn/library/mysql</div></pre></td></tr></table></figure>
-<p>其中：–name指定容器名称<br>
+          <h1 id="1dnf直接安装mysql安装包（dnf和yum类似）"><a href="#1dnf直接安装mysql安装包（dnf和yum类似）" class="headerlink" title="1dnf直接安装mysql安装包（dnf和yum类似）"></a>1dnf直接安装mysql安装包（dnf和yum类似）</h1>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/09/docker-install-mysql/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/27/create-docker-container-from-dockerfile/" itemprop="url">
-                  从Dockfile创建一个镜像
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-27T11:52:00+08:00" content="2015-10-27">
-              2015-10-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index">
-                    <span itemprop="name">docker</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/27/create-docker-container-from-dockerfile/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/27/create-docker-container-from-dockerfile/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/10/27/create-docker-container-from-dockerfile/" class="leancloud_visitors" data-flag-title="从Dockfile创建一个镜像">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>本文主要介绍从Dockerfile创建一个centos7镜像</p>
-<h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo yum install docker</div></pre></td></tr></table></figure>
-<p>添加当前用户到docker组中，可以省去每次输入sudo<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="variable">$sudo</span> usermod <span class="_">-a</span> -G docker <span class="variable">$USER</span></div></pre></td></tr></table></figure></p>
-<p>#下载相关文件<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/27/create-docker-container-from-dockerfile/#more" rel="contents">
+            <a class="btn" href="/2016/01/19/fedora-install-config-mysql/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1590,7 +1562,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1631,7 +1603,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1639,7 +1611,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1648,7 +1620,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
