@@ -1,0 +1,803 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="mysql," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="创建数据库create database &amp;lt;数据库名&amp;gt;create database test;
+删除数据库drop database &amp;lt;数据库名&amp;gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql常用命令">
+<meta property="og:url" content="http://grug.tech/2016/01/19/mysql-command/index.html">
+<meta property="og:site_name" content="Grug Code Life">
+<meta property="og:description" content="创建数据库create database &amp;lt;数据库名&amp;gt;create database test;
+删除数据库drop database &amp;lt;数据库名&amp;gt;">
+<meta property="og:updated_time" content="2016-09-28T06:34:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql常用命令">
+<meta name="twitter:description" content="创建数据库create database &amp;lt;数据库名&amp;gt;create database test;
+删除数据库drop database &amp;lt;数据库名&amp;gt;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6320578235264402000,
+      author: '作者'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://grug.tech/2016/01/19/mysql-command/"/>
+
+  <title> mysql常用命令 | Grug Code Life </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s95.cnzz.com/z_stat.php?id=1260282848&web_id=1260282848" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Grug Code Life</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                mysql常用命令
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-19T15:24:59+08:00" content="2016-01-19">
+              2016-01-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/19/mysql-command/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/19/mysql-command/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/01/19/mysql-command/" class="leancloud_visitors" data-flag-title="mysql常用命令">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h1><p><strong>create database &lt;数据库名&gt;</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">create database <span class="built_in">test</span>;</div></pre></td></tr></table></figure></p>
+<h1 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h1><p><strong>drop database &lt;数据库名&gt;</strong></p>
+<a id="more"></a>
+<h1 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h1><p><strong>use &lt;数据库名&gt;</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">use <span class="built_in">test</span>;</div></pre></td></tr></table></figure></p>
+<h1 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h1><p><strong>create table &lt;表名&gt; ( &lt;字段名1&gt; &lt;类型1&gt; [,..&lt;字段名n&gt; &lt;类型n&gt;]);</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">create table user(id int(4) not null primary key auto_increment,name char(20) not null,sex int(1) not null default <span class="string">'0'</span>);</div></pre></td></tr></table></figure></p>
+<h1 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h1><p><strong>drop table &lt;表名&gt;;</strong></p>
+<h1 id="表中插入数据"><a href="#表中插入数据" class="headerlink" title="表中插入数据"></a>表中插入数据</h1><p><strong>insert into &lt;表名&gt; [( &lt;字段名1&gt;[,..&lt;字段名n &gt; ])] values ( 值1 )[, ( 值n )]</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">mysql&gt; insert into user values (1,<span class="string">'tom'</span>,0),(2,<span class="string">'jack'</span>,0),(3,<span class="string">'penny'</span>,1);</div><div class="line">Query OK, 3 rows affected (0.05 sec)</div><div class="line">Records: 3 Duplicates: 0 Warnings: 0</div></pre></td></tr></table></figure></p>
+<h1 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h1><p><strong>select &lt;字段1，字段2，…&gt; from &lt; 表名 &gt; where &lt; 表达式 &gt;</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">mysql&gt; select * from user;</div><div class="line">+----+-------+-----+</div><div class="line">| id | name | sex |</div><div class="line">+----+-------+-----+</div><div class="line">| 1 | tom | 0 |</div><div class="line">| 2 | jack | 0 |</div><div class="line">| 3 | penny | 1 |</div><div class="line">+----+-------+-----+</div><div class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</div></pre></td></tr></table></figure></p>
+<p>以id倒序<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">mysql&gt; select * from user order by id desc;</div><div class="line">+----+-------+-----+</div><div class="line">| id | name | sex |</div><div class="line">+----+-------+-----+</div><div class="line">| 3 | penny | 1 |</div><div class="line">| 2 | jack | 0 |</div><div class="line">| 1 | tom | 0 |</div><div class="line">+----+-------+-----+</div><div class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p>结果限制数量<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">mysql&gt; select * from user order by id desc <span class="built_in">limit</span> 0,2;</div><div class="line">+----+-------+-----+</div><div class="line">| id | name | sex |</div><div class="line">+----+-------+-----+</div><div class="line">| 3 | penny | 1 |</div><div class="line">| 2 | jack | 0 |</div><div class="line">+----+-------+-----+</div><div class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h1 id="删除表中数据"><a href="#删除表中数据" class="headerlink" title="删除表中数据"></a>删除表中数据</h1><p><strong>delete from 表名 where 表达式</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">mysql&gt; delete from user <span class="built_in">where</span> id = 1;</div><div class="line">Query OK, 1 row affected (0.01 sec)</div><div class="line"></div><div class="line">mysql&gt; select * from user;</div><div class="line">+----+-------+-----+</div><div class="line">| id | name | sex |</div><div class="line">+----+-------+-----+</div><div class="line">| 2 | jack | 0 |</div><div class="line">| 3 | penny | 1 |</div><div class="line">+----+-------+-----+</div><div class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</div></pre></td></tr></table></figure>
+<h1 id="修改表中数据"><a href="#修改表中数据" class="headerlink" title="修改表中数据"></a>修改表中数据</h1><p><strong>update 表名 set 字段=新值,… where 条件</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">mysql&gt; select * from user;</div><div class="line">+----+-------+-----+</div><div class="line">| id | name | sex |</div><div class="line">+----+-------+-----+</div><div class="line">| 2 | jack | 0 |</div><div class="line">| 3 | penny | 1 |</div><div class="line">+----+-------+-----+</div><div class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</div><div class="line">mysql&gt; update user <span class="built_in">set</span> name=<span class="string">'grug'</span> <span class="built_in">where</span> id =3;</div><div class="line">Query OK, 1 row affected (0.03 sec)</div><div class="line">Rows matched: 1 Changed: 1 Warnings: 0</div><div class="line"></div><div class="line">mysql&gt; select * from user;</div><div class="line">+----+------+-----+</div><div class="line">| id | name | sex |</div><div class="line">+----+------+-----+</div><div class="line">| 2 | jack | 0 |</div><div class="line">| 3 | grug | 1 |</div><div class="line">+----+------+-----+</div><div class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</div></pre></td></tr></table></figure>
+<h1 id="增加字段"><a href="#增加字段" class="headerlink" title="增加字段"></a>增加字段</h1><p><strong>alter table</strong> 表名 <strong>add</strong>字段 类型 其他;<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">mysql&gt; alter table user add age int(2) default 0;</div><div class="line">mysql&gt; select * from user;</div><div class="line">+----+------+-----+------+</div><div class="line">| id | name | sex | age |</div><div class="line">+----+------+-----+------+</div><div class="line">| 2 | jack | 0 | 0 |</div><div class="line">| 3 | grug | 1 | 0 |</div><div class="line">+----+------+-----+------+</div><div class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</div></pre></td></tr></table></figure></p>
+<p><strong>加索引</strong><br>mysql&gt; alter table 表名 add index 索引名 (字段名1[，字段名2 …]);<br>例子：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">mysql&gt; alter table user add index index_name(name);</div></pre></td></tr></table></figure></p>
+<p><strong>加主关键字的索引</strong><br>mysql&gt; alter table 表名 add primary key (字段名);<br>例子：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">mysql&gt; alter table user add primary key(id);</div></pre></td></tr></table></figure></p>
+<p><strong>加唯一限制条件的索引</strong><br>mysql&gt; alter table 表名 add unique 索引名 (字段名);<br>例子：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">mysql&gt; alter table user add unique emp_name2(age);</div></pre></td></tr></table></figure></p>
+<p><strong>删除某个索引</strong><br>mysql&gt; alter table 表名 drop index 索引名;<br>例子：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">mysql&gt;alter table user drop index emp_name;</div></pre></td></tr></table></figure></p>
+<p><strong>增加字段：</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">mysql&gt; ALTER TABLE table_name ADD field_name field_type;</div></pre></td></tr></table></figure></p>
+<p><strong>修改原字段名称及类型：</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">mysql&gt; ALTER TABLE table_name CHANGE old_field_name new_field_name field_type;</div></pre></td></tr></table></figure></p>
+<p><strong>删除字段：</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">MySQL ALTER TABLE table_name DROP field_name;</div></pre></td></tr></table></figure></p>
+<h1 id="修改表名"><a href="#修改表名" class="headerlink" title="修改表名"></a>修改表名</h1><p><strong>rename table 原表名 to 新表名;</strong><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">mysql&gt; rename table user to new_user;</div><div class="line">Query OK, 0 rows affected (0.03 sec)</div><div class="line">mysql&gt; select * from new_user;</div><div class="line">+----+------+-----+------+</div><div class="line">| id | name | sex | age |</div><div class="line">+----+------+-----+------+</div><div class="line">| 2 | jack | 0 | 0 |</div><div class="line">| 3 | grug | 1 | 0 |</div><div class="line">+----+------+-----+------+</div><div class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag">#mysql</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/19/fedora-install-config-mysql/" rel="next" title="fedora安装配置mysql">
+                <i class="fa fa-chevron-left"></i> fedora安装配置mysql
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/20/redis-connection-refuse/" rel="prev" title="redis connection refuse（拒绝接连）问题解决">
+                redis connection refuse（拒绝接连）问题解决 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/01/19/mysql-command/"
+     data-title="mysql常用命令"
+     data-content=""
+     data-url="http://grug.tech/2016/01/19/mysql-command/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/01/19/mysql-command/"
+           data-title="mysql常用命令" data-url="http://grug.tech/2016/01/19/mysql-command/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/s-l300.jpg"
+               alt="Grug" />
+          <p class="site-author-name" itemprop="name">Grug</p>
+          <p class="site-description motion-element" itemprop="description">专注技术-快乐生活</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建数据库"><span class="nav-number">1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除数据库"><span class="nav-number">2.</span> <span class="nav-text">删除数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连接数据库"><span class="nav-number">3.</span> <span class="nav-text">连接数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建表"><span class="nav-number">4.</span> <span class="nav-text">创建表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除表"><span class="nav-number">5.</span> <span class="nav-text">删除表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表中插入数据"><span class="nav-number">6.</span> <span class="nav-text">表中插入数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询数据"><span class="nav-number">7.</span> <span class="nav-text">查询数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除表中数据"><span class="nav-number">8.</span> <span class="nav-text">删除表中数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改表中数据"><span class="nav-number">9.</span> <span class="nav-text">修改表中数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#增加字段"><span class="nav-number">10.</span> <span class="nav-text">增加字段</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改表名"><span class="nav-number">11.</span> <span class="nav-text">修改表名</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Grug</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"grug-tech"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("YhU32fJzpgFNnCdphqLyrn6t-gzGzoHsz", "2KFG5TVloy8WD2Tpd6pf10Vl");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

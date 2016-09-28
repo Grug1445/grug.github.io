@@ -1,0 +1,831 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="pylot," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本文主要翻译http://www.pylot.org/gettingstarted.html   “Using Pylot”段落
+Using Pylot 使用PylotStep 1: Create Test Cases 创建测试用例Test cases are declared in an XML file named “testcases.xml”, or a different XML fil">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pylot使用手册">
+<meta property="og:url" content="http://grug.tech/2015/12/11/pylot-user-guide/index.html">
+<meta property="og:site_name" content="Grug Code Life">
+<meta property="og:description" content="本文主要翻译http://www.pylot.org/gettingstarted.html   “Using Pylot”段落
+Using Pylot 使用PylotStep 1: Create Test Cases 创建测试用例Test cases are declared in an XML file named “testcases.xml”, or a different XML fil">
+<meta property="og:updated_time" content="2016-09-28T07:07:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pylot使用手册">
+<meta name="twitter:description" content="本文主要翻译http://www.pylot.org/gettingstarted.html   “Using Pylot”段落
+Using Pylot 使用PylotStep 1: Create Test Cases 创建测试用例Test cases are declared in an XML file named “testcases.xml”, or a different XML fil">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6320578235264402000,
+      author: '作者'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://grug.tech/2015/12/11/pylot-user-guide/"/>
+
+  <title> pylot使用手册 | Grug Code Life </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s95.cnzz.com/z_stat.php?id=1260282848&web_id=1260282848" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Grug Code Life</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                pylot使用手册
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-11T15:32:58+08:00" content="2015-12-11">
+              2015-12-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/pylot/" itemprop="url" rel="index">
+                    <span itemprop="name">pylot</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/11/pylot-user-guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/11/pylot-user-guide/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/12/11/pylot-user-guide/" class="leancloud_visitors" data-flag-title="pylot使用手册">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文主要翻译<a href="http://www.pylot.org/gettingstarted.html" target="_blank" rel="external">http://www.pylot.org/gettingstarted.html</a>   “Using Pylot”段落</p>
+<h2 id="Using-Pylot-使用Pylot"><a href="#Using-Pylot-使用Pylot" class="headerlink" title="Using Pylot 使用Pylot"></a>Using Pylot <strong>使用Pylot</strong></h2><h3 id="Step-1-Create-Test-Cases-创建测试用例"><a href="#Step-1-Create-Test-Cases-创建测试用例" class="headerlink" title="Step 1: Create Test Cases 创建测试用例"></a>Step 1: Create Test Cases <strong>创建测试用例</strong></h3><p>Test cases are declared in an XML file named “testcases.xml”, or a different XML file specified on the command line. This is the format that the test engine understands.</p>
+<p><strong>测试用例在”testcases.xml”中定义，或者在命令行中指定。</strong></p>
+<p>A test case is defined using the following syntax. Only the URL element is required.</p>
+<a id="more"></a>
+<p><strong>一个测试用例可以像下面一样定义，只有URL是必需的。</strong><br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"> <span class="tag">&lt;<span class="name">case</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span>URL<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">method</span>&gt;</span>HTTP METHOD<span class="tag">&lt;/<span class="name">method</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span>REQUEST BODY CONTENT<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">add_header</span>&gt;</span>ADDITIONAL HTTP HEADER<span class="tag">&lt;/<span class="name">add_header</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">verify</span>&gt;</span>STRING OR REGULAR EXPRESSION<span class="tag">&lt;/<span class="name">verify</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">verify_negative</span>&gt;</span>STRING OR REGULAR EXPRESSION<span class="tag">&lt;/<span class="name">verify_negative</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">timer_group</span>&gt;</span>TIMER GROUP NAME<span class="tag">&lt;/<span class="name">timer_group</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">case</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Below is an example of the simplest possible test case file. It contains a single test case which will be executed continuously during the test run. The test case contains a URL for the service under test. Since no method or body defined, it will default to sending an HTTP GET to this resource. Since no verifications are defined, it will pass/fail the test case based on the HTTP status code it receives (pass if status is&gt; 400).</p>
+<p><strong>下面是一个很简单的用例文件。它只包含了一个测试用例。这个用例包含一个URL.因为没有定义methon和body标签，所以用例默认会发送一个HTTP Get请求来请求资源。同样，因为没有定义标签 verifications，所以它以返回的HTTP状态码来判断请求是否成功。</strong><br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">testcases</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">case</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://www.example.com/foo<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">case</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">testcases</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>We can add positive and negative verifications. A positive verification is a string or regular expression that must be contained in the response body. A negative verification is a string or regular expression that must not be contained in the response body.</p>
+<p><strong>我们可以增加<em>肯定假设</em>和<em>否定假设。肯定假设</em>是返回的结果中一定包含的字符或者正则表达式。<em>否定假设</em>是返回的结果中一定不包含的字符或者正则表达式。</strong><br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">case</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://www.goldb.org/foo<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">verify</span>&gt;</span>Copyright.*Corey Goldberg<span class="tag">&lt;/<span class="name">verify</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">verify_negative</span>&gt;</span>Error<span class="tag">&lt;/<span class="name">verify_negative</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">case</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies:"></a>Cookies:</h4><p>Cookies are handled automatically. If a response is received with a “Set-cookie” header, the cookie will be set and passed back in the header of subsequent requests.</p>
+<p><strong>Cookies会自动处理。如果返回头中有“Set-cookie”,这个cookie就会被设置并传到后续的请求中。</strong></p>
+<h4 id="Example-Yahoo-Search-Web-Services-REST-API"><a href="#Example-Yahoo-Search-Web-Services-REST-API" class="headerlink" title="Example: Yahoo! Search Web Services (REST API)"></a>Example: Yahoo! Search Web Services (REST API)</h4><p>Yahoo offers various <a href="http://developer.yahoo.com/search/rest.html" target="_blank" rel="external">REST Web Services</a> to access search results. In this example, I will show how to create Pylot test cases to interact with the REST API.</p>
+<p><strong>雅虎提供各种各样的REST 搜索服务。在下面的例子中，我会解释如何创建Pylot测试用例来测试他们的REST API</strong></p>
+<p>Here is a simple GET request against the service:</p>
+<p><strong>下面是一个简单的Get服务请求</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">http://search.yahooapis.com/WebSearchService/V1/webSearch?appid=YahooDemo&amp;query=foo</div></pre></td></tr></table></figure></p>
+<p>A Pylot test case for this request would look like this:</p>
+<p><strong> 一个对应的Pylot测试用例像下面这样：</strong><br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">case</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://search.yahooapis.com/WebSearchService/V1/webSearch?appid=YahooDemo&amp;query=foo<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">case</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Notice that the ampersand (&amp;) in the URL was escaped with the code: “&amp;”<br>This is done becasue certain characters (“&lt;” and “&amp;”) are illegal in XML documents. Since we are definig test cases within an XML doc, we must either escape these with ampersand codes, or place them within a CDATA section.</p>
+<p><strong>请注意URL中的“&amp;”字符转义成了“&amp;”。原因是XML文件中“&lt;”和“&amp;”是非法的。我们的测试用例是定义在xml中，我们必须转义这些字符或者定义在“CDATA ”段落中。</strong></p>
+<p>Yahoo also allows the query parameters to be passed in the POST data block. In this case we must also change the “Content-type” HTTP header to: “application/x-www-form-urlencoded”. (Pylot defaults to “text/xml”)</p>
+<p><strong>雅虎允许在post请求中添加 query参数。在这里，我们必须修改http头为”application/x-www-form-urlencoded”。（Pylot 默认是”text/xml”）</strong></p>
+<p>Here is a POST request against the service:</p>
+<p><strong>下面是一个POST服务请求。</strong><br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">case</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://search.yahooapis.com/WebSearchService/V1/webSearch<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">method</span>&gt;</span>POST<span class="tag">&lt;/<span class="name">method</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span>&lt;![CDATA[appid=YahooDemo&amp;query=webinject]]&gt;<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">add_header</span>&gt;</span>Content-type: application/x-www-form-urlencoded<span class="tag">&lt;/<span class="name">add_header</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">case</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Now that we know how to create individual cases, we can create a test case file containing several of these. In this example, our test case file contains Yahoo web search queries for: “foo”, “bar”, “baz”</p>
+<p><strong>现在我们知道了如何创建单个独立的用例，我们还可以在一个测试用例文件中包含多个用例。在下面的例子中，我们的一个文件中包含了在雅虎中搜索“foo”,”bar”,”baz”.</strong><br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">testcases</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">case</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://search.yahooapis.com/WebSearchService/V1/webSearch?appid=YahooDemo&amp;query=foo<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">case</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">case</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://search.yahooapis.com/WebSearchService/V1/webSearch?appid=YahooDemo&amp;query=bar<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">case</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">case</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://search.yahooapis.com/WebSearchService/V1/webSearch?appid=YahooDemo&amp;query=baz<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">case</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">testcases</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="Example-SOAP-API"><a href="#Example-SOAP-API" class="headerlink" title="Example: SOAP API"></a>Example: SOAP API</h4><p>We can model our test cases to talk to any HTTP API. This example shows how you could send requests to a SOAP service. The SOAP envelope we need to send will be enclosed in the HTTP POST body.</p>
+<p><strong>我们可以组织我们的测试用例来测试任意HTTP API.下面的例子告诉我们如何测试SOAP 服务。SOAP  请求内容要声明在HTTP POST body标签中。</strong><br><figure class="highlight"><table><tr><td class="code"><pre><div class="line">&lt;case&gt;</div><div class="line">  &lt;url&gt;http://www.example.org/StockPrice&lt;/url&gt;</div><div class="line">  &lt;method&gt;POST&lt;/method&gt;</div><div class="line">  &lt;add_header&gt;Content-Type: application/soap+xml; charset=utf-8&lt;/add_header&gt;</div><div class="line">  &lt;body&gt;&lt;!</div><div class="line">    [CDATA[</div><div class="line"></div><div class="line">      &lt;!-- This is the SOAP Envelope  --&gt;  </div><div class="line">      &lt;?xml version="1.0"?&gt;</div><div class="line">      &lt;soap:Envelope xmlns:soap="http://www.w3.org/2001/12/soap-envelope"</div><div class="line">        soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding"&gt;</div><div class="line">        &lt;soap:Body xmlns:m="http://www.example.org/stock"&gt;</div><div class="line">          &lt;m:GetStockPrice&gt;</div><div class="line">            &lt;m:StockName&gt;IBM&lt;/m:StockName&gt;</div><div class="line">          &lt;/m:GetStockPrice&gt;</div><div class="line">        &lt;/soap:Body&gt;</div><div class="line">      &lt;/soap:Envelope&gt;</div><div class="line"></div><div class="line">    ]]&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/case&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="Example-Setting-Static-Variables-Parameters-设置静态变量-参数"><a href="#Example-Setting-Static-Variables-Parameters-设置静态变量-参数" class="headerlink" title="Example: Setting Static Variables/Parameters 设置静态变量/参数"></a>Example: Setting Static Variables/Parameters <strong>设置静态变量/参数</strong></h4><p>You can define global parameters in your test case file. This is useful if you have a value shared among several test cases that you change often. In the example below, we define an “http_server” parameter and then use that token in a test case.</p>
+<p><strong>你可以在测试用例文件中定义全局参数。如果在几个测试用例中共用一个值，这会非常有用。下面我们定义了一个“http_server” 参数并在一个用例中使用了它。</strong><br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">testcases</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"http_server"</span> <span class="attr">value</span>=<span class="string">"http://www.example.com"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">case</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>$&#123;http_server&#125;/foo<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">case</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">testcases</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="Example-File-based-HTTP-Payloads-基于文件的HTTP请求"><a href="#Example-File-based-HTTP-Payloads-基于文件的HTTP请求" class="headerlink" title="Example: File-based HTTP Payloads 基于文件的HTTP请求"></a>Example: File-based HTTP Payloads <strong>基于文件的HTTP请求</strong></h4><p>You may want to store POST data in an external file rather than declaring it directly in your testcase XML file. This is useful if you have very large POST BODYs or want to send binary data which can not be embedded in XML. Use the syntax below to pull data from a file and POST it at runtime.</p>
+<p><strong>你可能会想把提交的数据放在一个外部的文件中而不是直接定义在testcase xml 文件中。当你的提交数据非常大或者要提交二进制数据，但又不能在xml中定义时，这会非常有用。用下面的语法从文件获取数据并在运行时提交。</strong><br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">case</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://www.example.com/foo<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">method</span>&gt;</span>POST<span class="tag">&lt;/<span class="name">method</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span> <span class="attr">file</span>=<span class="string">"./myfile.dat"</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">case</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="Step-2-Model-Workload-Scenario-工作量模型方案"><a href="#Step-2-Model-Workload-Scenario-工作量模型方案" class="headerlink" title="Step 2: Model Workload Scenario 工作量模型方案"></a>Step 2: Model Workload Scenario <strong>工作量模型方案</strong></h3><p>Define a workload using the controls on the UI. Using the options below. you can create a steady-state or increasing load test.</p>
+<p><strong>在UI上定义工作量。可以选择下面的选项。可以创建静态或者动态的测试。</strong></p>
+<ul>
+<li><strong>Agents</strong>: number of agents (virtual users) to run <strong>代理个数（虚拟访问者）</strong></li>
+<li><strong>Rampup</strong>: time span over which agents are started. They will be evenly distributed throughout this time span. (see note below)<strong>每个代理启动的间隔。</strong></li>
+<li><strong>Interval</strong>: interval at which each user sends requests. The requests from each user agent are paced at even intervals (unless the respone time is slower thean the interval defined)<strong>每个虚拟用户请求的间隔。</strong></li>
+<li><strong>Duration</strong>: time span of the test <strong>测试持续时间</strong></li>
+</ul>
+<h3 id="Step-3-Execute-and-Monitor-运行和监控"><a href="#Step-3-Execute-and-Monitor-运行和监控" class="headerlink" title="Step 3: Execute and Monitor 运行和监控"></a>Step 3: Execute and Monitor <strong>运行和监控</strong></h3><h4 id="Run-Modes-运行以下模式"><a href="#Run-Modes-运行以下模式" class="headerlink" title="Run Modes 运行以下模式"></a>Run Modes <strong>运行以下模式</strong></h4><ul>
+<li><strong>Console Mode</strong>: During the test, you can view real-time stats on the <strong>UI 命令行模式：在命令行实时查看进程。</strong></li>
+<li><strong>Blocking Mode</strong>: STDOUT is blocked until test finishes, results are returned as XML<strong> 阻断模式：不输出日志，直到结束，返回xml结果</strong></li>
+<li><strong>GUI Mode</strong>: Manage and view running tests with the GUI interface <strong>界面模式：在界面下管理用例。</strong><br>At the end of a test run, an HTML report is automatically generated, showing test results and graphs.</li>
+</ul>
+<p><strong>最后，会自动产生一个HTML报告，展示测试结果和图像。</strong></p>
+<h3 id="Step-4-View-Results-查看结果"><a href="#Step-4-View-Results-查看结果" class="headerlink" title="Step 4: View Results 查看结果"></a>Step 4: View Results <strong>查看结果</strong></h3><p>When a test is finished, a results directory is created and a report is automatically generated to summarize the test results. It includes various statistics and graphs for response times and throughput. A sample of the results report can be seen here:</p>
+<p><strong>当测试结束，会自动生产一个文件夹和测试报告。包含响应时间和吞吐量各种数据和表格。下面是一个示例：</strong></p>
+<p><a href="http://www.pylot.org/samples/results/results.html" target="_blank" rel="external">Sample Report</a></p>
+<p>Pylot also writes results to CSV text files so you can import them into your favorite spreadsheet to crunch numbers, generate statistics, and create graphs.</p>
+<p><strong>Pylot 也会生产csv文件，你可以导入到你喜欢的表格处理程序中来处理数字，生产数据，创建图表。</strong></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pylot/" rel="tag">#pylot</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/11/pylot-in-action/" rel="next" title="pylot压力测试工具使用">
+                <i class="fa fa-chevron-left"></i> pylot压力测试工具使用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/13/thread-join/" rel="prev" title="Thread.join()用法">
+                Thread.join()用法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/12/11/pylot-user-guide/"
+     data-title="pylot使用手册"
+     data-content=""
+     data-url="http://grug.tech/2015/12/11/pylot-user-guide/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/12/11/pylot-user-guide/"
+           data-title="pylot使用手册" data-url="http://grug.tech/2015/12/11/pylot-user-guide/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/s-l300.jpg"
+               alt="Grug" />
+          <p class="site-author-name" itemprop="name">Grug</p>
+          <p class="site-description motion-element" itemprop="description">专注技术-快乐生活</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-Pylot-使用Pylot"><span class="nav-number">1.</span> <span class="nav-text">Using Pylot 使用Pylot</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-1-Create-Test-Cases-创建测试用例"><span class="nav-number">1.1.</span> <span class="nav-text">Step 1: Create Test Cases 创建测试用例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cookies"><span class="nav-number">1.1.1.</span> <span class="nav-text">Cookies:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-Yahoo-Search-Web-Services-REST-API"><span class="nav-number">1.1.2.</span> <span class="nav-text">Example: Yahoo! Search Web Services (REST API)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-SOAP-API"><span class="nav-number">1.1.3.</span> <span class="nav-text">Example: SOAP API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-Setting-Static-Variables-Parameters-设置静态变量-参数"><span class="nav-number">1.1.4.</span> <span class="nav-text">Example: Setting Static Variables/Parameters 设置静态变量/参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-File-based-HTTP-Payloads-基于文件的HTTP请求"><span class="nav-number">1.1.5.</span> <span class="nav-text">Example: File-based HTTP Payloads 基于文件的HTTP请求</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-2-Model-Workload-Scenario-工作量模型方案"><span class="nav-number">1.2.</span> <span class="nav-text">Step 2: Model Workload Scenario 工作量模型方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-3-Execute-and-Monitor-运行和监控"><span class="nav-number">1.3.</span> <span class="nav-text">Step 3: Execute and Monitor 运行和监控</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Run-Modes-运行以下模式"><span class="nav-number">1.3.1.</span> <span class="nav-text">Run Modes 运行以下模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-4-View-Results-查看结果"><span class="nav-number">1.4.</span> <span class="nav-text">Step 4: View Results 查看结果</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Grug</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"grug-tech"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("YhU32fJzpgFNnCdphqLyrn6t-gzGzoHsz", "2KFG5TVloy8WD2Tpd6pf10Vl");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
